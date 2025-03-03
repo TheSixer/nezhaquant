@@ -79,7 +79,7 @@ const Header = () => {
             alt="Nezha Quant"
           />
         </div>
-        <div className="text-4xl text-primary">哪吒量化 NezhaQuant</div>
+        <div className="text-xl text-primary md:text-4xl">哪吒量化 NezhaQuant</div>
       </NavbarBrand>
       <NavbarContent
         className="hidden gap-6 md:flex"
@@ -127,7 +127,7 @@ const Header = () => {
             <div
               onClick={handleClick(item)}
               className={classnames(
-                'flex h-[115px] cursor-pointer items-center justify-between border-b-2 border-foreground px-9 text-3xl hover:text-primary',
+                'flex h-[100px] cursor-pointer items-center justify-between border-b-2 border-foreground px-9 text-3xl hover:text-primary',
               )}
             >
               <div

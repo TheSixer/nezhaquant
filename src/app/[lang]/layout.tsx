@@ -5,7 +5,6 @@ import { Geist, Geist_Mono } from 'next/font/google'
 
 import Footer from '@/components/Layout/Footer'
 import Header from '@/components/Layout/Header'
-import Main from '@/components/Layout/Main'
 
 import { HeroUIProviders } from './HeroUIProvider'
 
@@ -35,7 +34,7 @@ export default function RootLayout({
         <HeroUIProviders>
           <div className="relative flex flex-col">
             <Header />
-            <Main>{children}</Main>
+            {children}
             <Footer />
           </div>
         </HeroUIProviders>

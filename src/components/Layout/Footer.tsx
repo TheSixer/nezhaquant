@@ -2,7 +2,9 @@
 
 import Image from 'next/image'
 import { useParams } from 'next/navigation'
+import { useMemo } from 'react'
 
+import { useTranslation } from '@/i18n/client'
 import {
   faDiscord,
   faFacebookF,
@@ -16,8 +18,11 @@ import { Button } from '@heroui/react'
 
 const Footer = () => {
   const { lang } = useParams<{ lang: string }>()
+  const { t } = useTranslation('layout')
+  const footerI18n = useMemo(() => t('footer.slogan', { returnObjects: true }) as string[], [t])
+
   return (
-    <div className="w-full border-t-[40px] border-t-primary px-8 py-16 md:px-[200px] md:py-20">
+    <div className="w-full border-t-[20px] border-t-primary px-8 py-16 md:border-t-[40px] md:px-[200px] md:py-20">
       <div className="flex flex-col justify-between gap-9 md:flex-row">
         <div>
           <div className="flex items-center gap-2">
@@ -26,13 +31,14 @@ const Footer = () => {
               height={78}
               src="/assets/logo.svg"
               alt="Nezha Quant"
+              className="h-8 w-14"
             />
             <div className="text-primary">
-              <div className="text-4xl">关注哪吒量化，开启你的智能量化之旅！</div>
-              <div className="text-xl">我命由我，不由天 My Fate is Mine, Not Heaven’s</div>
+              <div className="text-xl md:text-4xl">{footerI18n[0]}</div>
+              <div className="text-sm md:text-xl">{footerI18n[1]}</div>
             </div>
           </div>
-          <div className="mt-12 flex flex-col gap-6 px-8 text-2xl">
+          <div className="mt-12 flex flex-col gap-6 text-2xl md:px-8">
             <div className="flex items-center gap-4">
               <div className="h-8 w-8 text-center">
                 <FontAwesomeIcon icon={faEnvelope} />
@@ -59,9 +65,9 @@ const Footer = () => {
             color="primary"
             variant="bordered"
             radius="none"
-            className="h-20 w-[400px] text-3xl"
+            className="w-60 md:h-20 md:w-[400px] md:text-3xl"
           >
-            联系我们
+            {t('contactUs')}
           </Button>
           {lang !== 'zh-CN' ? (
             <div className="mt-8 flex items-center gap-8 text-2xl">

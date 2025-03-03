@@ -22,7 +22,7 @@ const Banner: React.FC<React.PropsWithChildren<{ image?: string; extraImage?: st
   }, [extraImage, image])
 
   return (
-    <div className="sticky top-[100px] h-[760px]">
+    <div className="sticky top-[100px] h-48 md:h-[760px]">
       {extraImage ? (
         <div
           style={background.extra}

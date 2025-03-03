@@ -1,5 +1,13 @@
-const Main: React.FC<React.PropsWithChildren> = ({ children }) => {
-  return <main className="relative z-10 mx-auto w-full">{children}</main>
+const Main: React.FC<React.PropsWithChildren<{ banner: React.ReactNode }>> = ({
+  children,
+  banner,
+}) => {
+  return (
+    <main className="relative w-full">
+      {banner ? banner : null}
+      <div className="relative">{children}</div>
+    </main>
+  )
 }
 
 export default Main
