@@ -57,7 +57,7 @@ const Content: React.FC = () => {
             {superiority.title}
           </div>
         </div>
-        <div className="flex-col gap-[100px] md:flex-row">
+        <div className="flex flex-col gap-[100px] md:flex-row">
           <Image
             alt={superiority.title}
             src={superiority.cover!}

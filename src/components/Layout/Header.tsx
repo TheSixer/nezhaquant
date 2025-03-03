@@ -113,7 +113,10 @@ const Header = () => {
         ))}
       </NavbarContent>
 
-      <NavbarContent justify="end">
+      <NavbarContent
+        justify="end"
+        className="md:hidden"
+      >
         <NavbarItem>
           <Button
             color="primary"
@@ -152,11 +155,11 @@ const Header = () => {
             <div
               onClick={handleClick(item)}
               className={classnames(
-                'flex h-[100px] cursor-pointer items-center justify-between border-b-2 border-foreground px-9 text-3xl hover:text-primary',
+                'flex h-14 cursor-pointer items-center justify-between border-b-2 border-foreground px-4 text-lg hover:text-primary',
               )}
             >
               <div
-                className={isActive(item.pathname) ? 'border-b-4 border-primary pb-2' : undefined}
+                className={isActive(item.pathname) ? 'border-b-2 border-primary pb-0.5' : undefined}
               >
                 {item.name}
               </div>
