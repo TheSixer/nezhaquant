@@ -61,7 +61,7 @@ const Content: React.FC = () => {
             width={720}
             height={380}
           />
-          <div className="mt-2 flex flex-col text-lg md:mt-0">
+          <div className="mt-2 flex flex-1 flex-col text-lg md:mt-0">
             {superiority.description.map((str) => (
               <div
                 key={str}

@@ -19,10 +19,7 @@ const Content: React.FC = () => {
 
   return (
     <>
-      <Section
-        dark
-        data={flow}
-      />
+      <Section data={flow} />
       <Wrapper dark={false}>
         <div className="text-title mb-4 text-2xl text-primary md:mb-8 md:text-[40px]">
           {example.title}

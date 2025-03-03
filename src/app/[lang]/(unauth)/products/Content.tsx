@@ -19,16 +19,16 @@ const Content: React.FC = () => {
 
   return (
     <>
+      <Section data={wheel} />
       <Section
-        dark
-        data={wheel}
+        dark={false}
+        data={belt}
       />
-      <Section data={belt} />
+      <Section data={ai} />
       <Section
-        dark
-        data={ai}
+        dark={false}
+        data={risk}
       />
-      <Section data={risk} />
     </>
   )
 }

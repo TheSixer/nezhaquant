@@ -6,7 +6,7 @@ import Wrapper from '@/components/Layout/Wrapper'
 import { useMemo } from 'react'
 import { classnames } from '@/utils/classnames'
 
-const Section: React.FC<{ data: I18nObject; dark?: boolean }> = ({ data, dark = false }) => {
+const Section: React.FC<{ data: I18nObject; dark?: boolean }> = ({ data, dark = true }) => {
   const border = useMemo(() => (dark ? 'border-b-foreground/10' : 'border-b-background/10'), [dark])
   return (
     <>
@@ -48,7 +48,9 @@ const Section: React.FC<{ data: I18nObject; dark?: boolean }> = ({ data, dark = 
                       <div className="text-title w-6">{idx + 1}</div>
                       <div className="md:text-lg">{item.title}</div>
                     </div>
-                    <div className="text-sm md:text-medium">{item.description[0]}</div>
+                    {item.description ? (
+                      <div className="text-sm md:text-medium">{item.description[0]}</div>
+                    ) : null}
                   </div>
                 ))}
               </div>
