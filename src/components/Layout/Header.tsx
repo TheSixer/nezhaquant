@@ -72,7 +72,7 @@ const Header = () => {
     <Navbar
       maxWidth="2xl"
       classNames={{
-        wrapper: 'wrapper h-[100px]',
+        wrapper: 'max-w-[1520px] h-[100px] md:px-0',
       }}
       className="bg-background"
       isMenuOpen={isOpen}

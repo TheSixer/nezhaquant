@@ -18,10 +18,7 @@ const Content: React.FC = () => {
 
   return (
     <>
-      <Wrapper
-        dark={false}
-        className="py-5 md:py-24"
-      >
+      <Wrapper dark={false}>
         <div className="text-title mb-8 text-[40px] text-primary">{service.title}</div>
         <div className="mb-16 leading-8 opacity-80">{service.description[0]}</div>
         <div className="flex flex-col justify-between gap-9 md:flex-row">
@@ -51,7 +48,7 @@ const Content: React.FC = () => {
         </div>
       </Wrapper>
 
-      <Wrapper className="py-24">
+      <Wrapper>
         <div className="mb-16 text-center">
           <div className="text-title mx-auto mb-8 inline-block border-b-4 border-primary text-[40px]">
             {superiority.title}

@@ -10,10 +10,7 @@ const Section: React.FC<{ data: I18nObject; dark?: boolean }> = ({ data, dark = 
   const border = useMemo(() => (dark ? 'border-b-foreground/10' : 'border-b-background/10'), [dark])
   return (
     <>
-      <Wrapper
-        dark={dark}
-        className="!px-6 py-6 md:py-24"
-      >
+      <Wrapper dark={dark}>
         {data.cover ? (
           <div className="text-title mb-5 text-2xl text-primary md:text-[40px]">{data.title}</div>
         ) : (
