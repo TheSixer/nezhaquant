@@ -18,8 +18,24 @@ body {
   -moz-osx-font-smoothing: grayscale; /* 对 Firefox 较有效 */
 }
 
+.wrapper {
+  max-width: 1920px;
+  padding: 0 28px;
+}
+
+@media screen and (min-width: 768px) {
+  .wrapper {
+    padding: 0 200px;
+  }
+}
+
+.bordered-button {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
 .text-title {
   font-family: 庞门正道;
+  text-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
 .text-number {

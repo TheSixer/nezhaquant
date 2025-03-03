@@ -1,3 +1,5 @@
-export default function Home() {
-  return <div>hero ui</div>
+import Home from './home'
+
+export default function HomePage() {
+  return <Home />
 }
