@@ -36,9 +36,9 @@ export default function RootLayout({
           <div className="relative flex flex-col">
             <Header />
             <Main>{children}</Main>
+            <Footer />
           </div>
         </HeroUIProviders>
-        <Footer />
       </body>
     </html>
   )

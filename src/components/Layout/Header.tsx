@@ -7,6 +7,8 @@ import { useCallback, useMemo } from 'react'
 
 import { useTranslation } from '@/i18n/client'
 import { classnames } from '@/utils/classnames'
+import { faChevronUp } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   Navbar,
   NavbarBrand,
@@ -23,13 +25,13 @@ const Header = () => {
 
   const { isOpen, onOpenChange, onClose } = useDisclosure()
   const pathname = usePathname()
-  const params = useParams<{ lang: string }>()
+  const { lang } = useParams<{ lang: string }>()
   const router = useRouter()
 
   const navItems = useMemo(() => {
     const menus = t('menus', { returnObjects: true }) as string[]
     return [
-      { name: menus[0], pathname: '' },
+      { name: menus[0], pathname: '/' },
       {
         name: menus[1],
         pathname: '/products',
@@ -38,7 +40,7 @@ const Header = () => {
       { name: menus[3], pathname: '/courses' },
       { name: menus[4], pathname: '/partners' },
     ]
-  }, [])
+  }, [t])
 
   const handleClick = useCallback(
     (item: (typeof navItems)[number]) => () => {
@@ -49,23 +51,25 @@ const Header = () => {
   )
 
   const isActive = useCallback(
-    (name: string) => pathname.replace(`/${params.lang}`, '') === name,
-    [],
+    (name: string) => {
+      const _pathname = pathname.replace(`/${lang}`, '')
+      return (_pathname === '' && name === '/') || _pathname === name
+    },
+    [lang, pathname],
   )
 
   return (
     <Navbar
       maxWidth="2xl"
       classNames={{
-        wrapper: 'max-w-7xl',
+        wrapper: 'max-w-[1920px] md:px-[200px] px-7 h-[100px]',
       }}
+      className="bg-transparent"
       isMenuOpen={isOpen}
+      height="100px"
       onMenuOpenChange={onOpenChange}
+      isBlurred={false}
     >
-      <NavbarMenuToggle
-        aria-label={isOpen ? 'Close menu' : 'Open menu'}
-        className="md:hidden"
-      />
       <NavbarBrand>
         <div className="flex items-center gap-2">
           <Image
@@ -75,10 +79,11 @@ const Header = () => {
             alt="Nezha Quant"
           />
         </div>
+        <div className="text-4xl text-primary">哪吒量化 NezhaQuant</div>
       </NavbarBrand>
       <NavbarContent
         className="hidden gap-6 md:flex"
-        justify="center"
+        justify="end"
       >
         {navItems.map((item) => (
           <NavbarItem
@@ -88,8 +93,8 @@ const Header = () => {
             <Link
               href={item.pathname}
               className={classnames(
-                'flex items-center gap-2',
-                isActive(item.pathname) ? 'text-primary' : undefined,
+                'flex items-center gap-2 border-b-3 border-transparent text-medium',
+                isActive(item.pathname) ? 'border-primary' : undefined,
               )}
             >
               {item.name}
@@ -97,31 +102,40 @@ const Header = () => {
           </NavbarItem>
         ))}
       </NavbarContent>
-      <NavbarContent justify="end">
-        {/* <NavbarItem>
-                    <Link href="#">Login</Link>
-                </NavbarItem>
-                <NavbarItem>
-                    <Button
-                        as={Link}
-                        color="secondary"
-                        href="#"
-                    >
-                        Sign Up
-                    </Button>
-                </NavbarItem> */}
-      </NavbarContent>
-      <NavbarMenu>
+      {/* <NavbarContent justify="end"> 
+        <NavbarItem>
+          <Link href="#">Login</Link>
+        </NavbarItem>
+        <NavbarItem>
+          <Button
+            as={Link}
+            color="secondary"
+            href="#"
+          >
+            Sign Up
+          </Button>
+        </NavbarItem>
+      </NavbarContent> */}
+      <NavbarMenuToggle
+        aria-label={isOpen ? 'Close menu' : 'Open menu'}
+        className="md:hidden"
+      />
+
+      <NavbarMenu className="bg-background p-0">
         {navItems.map((item) => (
           <NavbarMenuItem key={item.name}>
             <div
               onClick={handleClick(item)}
               className={classnames(
-                'hover:text-primary flex cursor-pointer items-center gap-2',
-                isActive(item.pathname) ? 'text-primary' : undefined,
+                'flex h-[115px] cursor-pointer items-center justify-between border-b-2 border-foreground px-9 text-3xl hover:text-primary',
               )}
             >
-              {item.name}
+              <div
+                className={isActive(item.pathname) ? 'border-b-4 border-primary pb-2' : undefined}
+              >
+                {item.name}
+              </div>
+              <FontAwesomeIcon icon={faChevronUp} />
             </div>
           </NavbarMenuItem>
         ))}
