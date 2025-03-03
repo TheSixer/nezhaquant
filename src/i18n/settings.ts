@@ -1,11 +1,8 @@
-export const fallbackLng = "zh-CN";
-export const languages = [fallbackLng, "en"];
-export const defaultNS = "global";
+export const fallbackLng = 'zh-CN'
+export const languages = [fallbackLng, 'en']
+export const defaultNS = 'global'
 
-export function getOptions(
-  lng = fallbackLng,
-  ns: string | string[] = defaultNS
-) {
+export function getOptions(lng = fallbackLng, ns: string | string[] = defaultNS) {
   return {
     // debug: true,
     supportedLngs: languages,
@@ -14,5 +11,10 @@ export function getOptions(
     fallbackNS: defaultNS,
     defaultNS,
     ns,
-  };
+  }
 }
+
+export const languagesLabel = [
+  { lang: 'zh-CN', label: 'CN' },
+  { lang: 'en', label: 'EN' },
+]

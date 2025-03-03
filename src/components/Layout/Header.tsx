@@ -2,14 +2,16 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { useParams, usePathname, useRouter } from 'next/navigation'
+import { useParams, usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useCallback, useMemo } from 'react'
 
 import { useTranslation } from '@/i18n/client'
+import { languagesLabel } from '@/i18n/settings'
 import { classnames } from '@/utils/classnames'
-import { faChevronUp } from '@fortawesome/free-solid-svg-icons'
+import { faBars, faChevronUp, faXmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
+  Button,
   Navbar,
   NavbarBrand,
   NavbarContent,
@@ -22,7 +24,7 @@ import {
 
 const Header = () => {
   const { t } = useTranslation('layout')
-
+  const searchParams = useSearchParams()
   const { isOpen, onOpenChange, onClose } = useDisclosure()
   const pathname = usePathname()
   const { lang } = useParams<{ lang: string }>()
@@ -49,6 +51,14 @@ const Header = () => {
     },
     [onClose, router],
   )
+
+  const switchLang = useCallback(() => {
+    const search = searchParams.toString()
+
+    router.replace(
+      `/${lang === 'zh-CN' ? 'en' : 'zh-CN'}/${pathname.split('/').slice(2).join('/')}${search ? `?${search}` : ''}`,
+    )
+  }, [searchParams, router, lang, pathname])
 
   const isActive = useCallback(
     (name: string) => {
@@ -102,23 +112,38 @@ const Header = () => {
           </NavbarItem>
         ))}
       </NavbarContent>
-      {/* <NavbarContent justify="end"> 
-        <NavbarItem>
-          <Link href="#">Login</Link>
-        </NavbarItem>
+
+      <NavbarContent justify="end">
         <NavbarItem>
           <Button
-            as={Link}
-            color="secondary"
-            href="#"
+            color="primary"
+            variant="light"
+            onPress={switchLang}
           >
-            Sign Up
+            {languagesLabel.map((lg, idx) => (
+              <div
+                key={lg.lang}
+                className="flex items-center gap-2"
+              >
+                {idx ? <div className="h-4 w-[1px] bg-foreground" /> : null}
+                <span className={lang === lg.lang ? 'text-primary' : 'text-foreground'}>
+                  {lg.label}
+                </span>
+              </div>
+            ))}
           </Button>
         </NavbarItem>
-      </NavbarContent> */}
+      </NavbarContent>
+
       <NavbarMenuToggle
         aria-label={isOpen ? 'Close menu' : 'Open menu'}
         className="md:hidden"
+        icon={(isOpen) => (
+          <FontAwesomeIcon
+            className="text-xl text-primary"
+            icon={isOpen ? faXmark : faBars}
+          />
+        )}
       />
 
       <NavbarMenu className="bg-background p-0">

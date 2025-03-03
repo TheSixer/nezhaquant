@@ -7,7 +7,6 @@ acceptLanguage.languages(languages)
 
 async function languageMiddleware(req: NextRequest) {
   const pathname = req.nextUrl.pathname
-  console.log('pathname: ', pathname)
 
   // Redirect if lng in path is not supported
   if (!languages.some((loc) => pathname.startsWith(`/${loc}`))) {

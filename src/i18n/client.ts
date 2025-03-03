@@ -3,10 +3,11 @@ import i18next from 'i18next'
 import LanguageDetector from 'i18next-browser-languagedetector'
 import resourcesToBackend from 'i18next-resources-to-backend'
 import {
-  UseTranslationOptions,
   initReactI18next,
   useTranslation as useTranslationOrg,
+  UseTranslationOptions,
 } from 'react-i18next'
+
 import { getOptions, languages } from './settings'
 
 const runsOnServerSide = typeof window === 'undefined'
@@ -15,9 +16,9 @@ const i18n = i18next
   .use(initReactI18next)
   .use(LanguageDetector)
   .use(
-    resourcesToBackend(
-      (language: string, namespace: string) => import(`./locales/${language}/${namespace}.json`),
-    ),
+    resourcesToBackend((language: string, namespace: string) => {
+      return import(`./locales/${language}/${namespace}.json`)
+    }),
   )
   .init({
     ...getOptions(undefined, ['global', 'dictionary']),
@@ -27,7 +28,7 @@ const i18n = i18next
     preload: runsOnServerSide ? languages : [],
   })
 
-export function useTranslation(ns?: string, options?: UseTranslationOptions<any>) {
+export function useTranslation(ns?: string, options?: UseTranslationOptions<string>) {
   const ret = useTranslationOrg(ns, options)
 
   if (options?.lng && ret.i18n.language !== options.lng) {
