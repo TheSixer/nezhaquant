@@ -9,8 +9,8 @@ const Home: React.FC = () => {
 
   return (
     <Banner
-      image="/assets/home-banner.png"
-      extraImage="/assets/home-banner-extra.png"
+      image="/assets/images/home-banner.png"
+      extraImage="/assets/images/home-banner-extra.png"
     >
       <div className="absolute bottom-7 left-1/2 w-full -translate-x-1/2 text-center md:bottom-20">
         <div className="text-title mb-2 text-2xl md:mb-14 md:text-7xl">{t('slogan')}</div>

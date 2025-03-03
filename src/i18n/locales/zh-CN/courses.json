@@ -10,12 +10,12 @@
     "items": [
       {
         "title": "量化策略产品  Quant Strategy Hub",
-        "cover": "/assets/home-service-1.png",
+        "cover": "/assets/images/home-service-1.png",
         "description": ["风火轮100 — “极限杠杆，百倍利润”", "混天绫1% — “稳定复利，每日1%”"]
       },
       {
         "title": "量化代写服务  Custom Strategy Development",
-        "cover": "/assets/home-service-2.png",
+        "cover": "/assets/images/home-service-2.png",
         "description": [
           "策略定制、AI模型搭建、回测与实盘接入",
           "支持多平台：MT4/MT5、cTrader、Python 等"
@@ -23,7 +23,7 @@
       },
       {
         "title": "量化课程  Quant Academy",
-        "cover": "/assets/home-service-3.png",
+        "cover": "/assets/images/home-service-3.png",
         "description": [
           "从基础到进阶，覆盖量化编程、策略搭建、AI机器学习",
           "实盘案例、代码解析、直播互动，全方位助力成长"
@@ -38,26 +38,26 @@
       "进阶班：AI选股、机器学习在量化中的应用",
       "实战班：高频交易、套利策略、风控管理"
     ],
-    "cover": "/assets/home-superiority.png"
+    "cover": "/assets/images/home-superiority.png"
   },
   "point": {
     "title": "课程特点",
     "description": ["实盘案例解析", "源代码+课件下载", "定期直播答疑"],
-    "cover": "/assets/home-superiority.png"
+    "cover": "/assets/images/home-superiority.png"
   },
   "free": {
     "title": "免费课程模块",
     "items": [
       {
         "title": "实盘部署与后续支持 ",
-        "cover": "/assets/home-superiority.png",
+        "cover": "/assets/images/home-superiority.png",
         "descriptions": [
           "协助用户将策略部署到实盘交易环境，并提供技术支持与维护服务。 定期监控策略表现，根据市场变化提供策略调整建议，确保长期稳定运行。"
         ]
       },
       {
         "title": "如何识别单边行情 ",
-        "cover": "/assets/home-superiority.png",
+        "cover": "/assets/images/home-superiority.png",
         "descriptions": [
           "协助用户将策略部署到实盘交易环境，并提供技术支持与维护服务。 定期监控策略表现，根据市场变化提供策略调整建议，确保长期稳定运行。"
         ]

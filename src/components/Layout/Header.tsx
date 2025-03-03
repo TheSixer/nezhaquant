@@ -85,11 +85,12 @@ const Header = () => {
           <Image
             width={88}
             height={48}
-            src="/assets/logo.svg"
+            src="/assets/images/logo.svg"
             alt="Nezha Quant"
+            className="h-[24px] w-[44px] md:h-[48px] md:w-[88px]"
           />
         </div>
-        <div className="text-xl text-primary md:text-4xl">哪吒量化 NezhaQuant</div>
+        <div className="text-title text-xl text-primary md:text-4xl">{t('siteName')}</div>
       </NavbarBrand>
       <NavbarContent
         className="hidden gap-6 md:flex"

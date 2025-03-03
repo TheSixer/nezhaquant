@@ -50,10 +50,6 @@ const Content: React.FC = () => {
           ))}
         </div>
       </Wrapper>
-
-      <Section data={explain} />
-      <Section data={point} />
-      <Section data={free} />
     </>
   )
 }

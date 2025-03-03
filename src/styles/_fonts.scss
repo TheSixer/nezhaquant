@@ -1,4 +1,28 @@
 @font-face {
+  font-family: 思源黑体;
+  src: url(/assets/fonts/SourceHanSansCN-Medium.otf);
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 思源黑体;
+  src: url(/assets/fonts/SourceHanSansCN-Regular.otf);
+  font-weight: lighter;
+}
+
+@font-face {
+  font-family: 思源黑体;
+  src: url(/assets/fonts/SourceHanSansCN-Bold.otf);
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 思源黑体;
+  src: url(/assets/fonts/SourceHanSansCN-Heavy.otf);
+  font-weight: bolder;
+}
+
+@font-face {
   font-family: YouSheBiaoTiHei;
-  src: url(/assets/fonts/Furore.otf);
+  src: url(/assets/fonts/YouSheBiaoTiHei.ttf);
 }

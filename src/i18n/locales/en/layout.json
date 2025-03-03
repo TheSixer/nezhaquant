@@ -1,4 +1,5 @@
 {
+  "siteName": "NezhaQuant",
   "menus": ["Home", "Products", "Services", "Courses", "Partners"],
   "footer": {
     "slogan": [

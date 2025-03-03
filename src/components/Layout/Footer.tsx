@@ -29,7 +29,7 @@ const Footer = () => {
             <Image
               width={140}
               height={78}
-              src="/assets/logo.svg"
+              src="/assets/images/logo.svg"
               alt="Nezha Quant"
               className="h-8 w-14"
             />

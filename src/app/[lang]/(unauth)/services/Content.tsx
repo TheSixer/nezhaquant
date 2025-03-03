@@ -26,13 +26,13 @@ const Content: React.FC = () => {
         </div>
         <div className="flex flex-col justify-between gap-4 md:flex-row">
           <Image
-            src="/assets/services-1.png"
+            src="/assets/images/services-1.png"
             width={738}
             height={380}
             alt="service example 1"
           />
           <Image
-            src="/assets/services-2.png"
+            src="/assets/images/services-2.png"
             width={738}
             height={380}
             alt="service example 2"
