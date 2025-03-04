@@ -6,19 +6,23 @@ import Wrapper from '@/components/Layout/Wrapper'
 import { useMemo } from 'react'
 import { classnames } from '@/utils/classnames'
 
-const Section: React.FC<{ data: I18nObject; dark?: boolean }> = ({ data, dark = true }) => {
+const Section: React.FC<{ data: I18nObject; dark?: boolean; titleAlign?: 'left' | 'center' }> = ({
+  data,
+  dark = true,
+  titleAlign,
+}) => {
   const border = useMemo(() => (dark ? 'border-b-foreground/10' : 'border-b-background/10'), [dark])
   return (
     <>
       <Wrapper dark={dark}>
-        {data.cover ? (
-          <div className="text-title mb-5 text-2xl text-primary md:text-[40px]">{data.title}</div>
-        ) : (
+        {titleAlign === 'center' || !data.cover ? (
           <div className="text-center md:mb-16">
             <div className="text-title mb-8 inline-block border-b-4 border-primary pb-2 text-2xl md:text-4xl">
               {data.title}
             </div>
           </div>
+        ) : (
+          <div className="text-title mb-5 text-2xl text-primary md:text-[40px]">{data.title}</div>
         )}
 
         <div
@@ -36,9 +40,11 @@ const Section: React.FC<{ data: I18nObject; dark?: boolean }> = ({ data, dark = 
                 height={380}
               />
               <div className="mt-2 flex flex-1 flex-col text-lg md:mt-0">
-                <div className={classnames('h-16 border-b-1 text-xl', border)}>
-                  {data.description}
-                </div>
+                {data.description ? (
+                  <div className={classnames('h-16 border-b-1 text-xl', border)}>
+                    {data.description}
+                  </div>
+                ) : null}
                 {data.items?.map((item, idx) => (
                   <div
                     key={item.title}
@@ -68,9 +74,11 @@ const Section: React.FC<{ data: I18nObject; dark?: boolean }> = ({ data, dark = 
                   <div className="text-title mr-1 w-6 text-4xl text-primary">{idx + 1}</div>
                   <div className="md:text-lg">{item.title}</div>
                 </div>
-                <div className="text-sm leading-6 opacity-80 md:text-medium md:leading-8">
-                  {item.description[0]}
-                </div>
+                {item.description ? (
+                  <div className="text-sm leading-6 text-foreground/80 md:text-medium md:leading-8">
+                    {item.description[0]}
+                  </div>
+                ) : null}
               </div>
             ))
           )}

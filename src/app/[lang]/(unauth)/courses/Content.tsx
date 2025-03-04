@@ -3,9 +3,10 @@
 import Image from 'next/image'
 import { useMemo } from 'react'
 
+import BorderedButton from '@/components/Button'
 import Wrapper from '@/components/Layout/Wrapper'
-import { useTranslation } from '@/i18n/client'
 import Section from '@/components/Section'
+import { useTranslation } from '@/i18n/client'
 
 const Content: React.FC = () => {
   const { t } = useTranslation('courses')
@@ -46,6 +47,46 @@ const Content: React.FC = () => {
                   {str}
                 </div>
               ))}
+            </div>
+          ))}
+        </div>
+      </Wrapper>
+
+      <Section
+        data={explain}
+        titleAlign="center"
+      />
+      <Section
+        dark={false}
+        data={point}
+        titleAlign="center"
+      />
+      <Wrapper>
+        <div className="text-center md:mb-16">
+          <div className="text-title mb-8 inline-block border-b-4 border-primary pb-2 text-2xl md:text-4xl">
+            {free.title}
+          </div>
+        </div>
+        <div className="flex flex-col justify-between gap-9 md:flex-row">
+          {free.items?.map((item) => (
+            <div
+              key={item.title}
+              className="mt-3 flex-1 md:mt-0 md:w-[480px]"
+            >
+              <Image
+                alt={item.title}
+                src={item.cover!}
+                width={720}
+                height={380}
+                className="w-full"
+              />
+              <div className="bg-[#ebebeb]/10 px-12 py-8">
+                <div className="mb-5 text-sm md:text-lg">{item.title}</div>
+                <div className="text-foreground/80">{item.description[0]}</div>
+                <BorderedButton className="mt-8 h-8 w-full md:h-[60px] md:text-3xl">
+                  {t('signUp')}
+                </BorderedButton>
+              </div>
             </div>
           ))}
         </div>

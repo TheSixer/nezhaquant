@@ -14,7 +14,8 @@ import {
 } from '@fortawesome/free-brands-svg-icons'
 import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Button } from '@heroui/react'
+
+import BorderedButton from '../Button'
 
 const Footer = () => {
   const { lang } = useParams<{ lang: string }>()
@@ -33,7 +34,7 @@ const Footer = () => {
               alt="Nezha Quant"
               className="h-8 w-14"
             />
-            <div className="text-primary">
+            <div className="text-title text-primary">
               <div className="text-xl md:text-4xl">{footerI18n[0]}</div>
               <div className="text-sm md:text-xl">{footerI18n[1]}</div>
             </div>
@@ -60,15 +61,12 @@ const Footer = () => {
           </div>
         </div>
         <div className="text-center">
-          <Button
+          <BorderedButton
             size="lg"
-            color="primary"
-            variant="bordered"
-            radius="none"
             className="w-60 md:h-20 md:w-[400px] md:text-3xl"
           >
             {t('contactUs')}
-          </Button>
+          </BorderedButton>
           {lang !== 'zh-CN' ? (
             <div className="mt-8 flex items-center gap-8 text-2xl">
               <FontAwesomeIcon icon={faInstagram} />
