@@ -40,7 +40,7 @@ const Header = () => {
       },
       { name: menus[2], pathname: '/services' },
       { name: menus[3], pathname: '/courses' },
-      { name: menus[4], pathname: '/partners' },
+      { name: menus[4], pathname: '/cooperate' },
     ]
   }, [t])
 
