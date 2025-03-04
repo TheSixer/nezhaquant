@@ -1,11 +1,10 @@
 'use client'
 
+import Image from 'next/image'
 import { useMemo } from 'react'
 
 import Wrapper from '@/components/Layout/Wrapper'
-import Section from '@/components/Section'
 import { useTranslation } from '@/i18n/client'
-import Image from 'next/image'
 
 const Content: React.FC = () => {
   const { t } = useTranslation('cooperate')
