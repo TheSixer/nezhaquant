@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 
 import languageMiddleware from './middlewares/language'
 
-type Middleware = (req: NextRequest) => NextResponse | Promise<NextResponse | any> | any
+type Middleware = (req: NextRequest) => NextResponse | Promise<NextResponse | unknown> | unknown
 
 export const config = {
   matcher: ['/((?!_next/static|_next/image|assets|favicon.ico|sw.js).*)'],
