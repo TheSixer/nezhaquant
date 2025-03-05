@@ -1,21 +1,22 @@
-import React from 'react';
-import clsx from 'clsx';
+import React from 'react'
 
-type ColSpanType = number | null;
+import { classnames } from '@/utils/classnames'
+
+type ColSpanType = number | null
 
 interface ColSize {
-  xs?: ColSpanType;
-  sm?: ColSpanType;
-  md?: ColSpanType;
-  lg?: ColSpanType;
-  xl?: ColSpanType;
+  xs?: ColSpanType
+  sm?: ColSpanType
+  md?: ColSpanType
+  lg?: ColSpanType
+  xl?: ColSpanType
 }
 
 interface ColProps extends ColSize {
-  children: React.ReactNode;
-  className?: string;
-  span?: number;
-  style?: React.CSSProperties;
+  children: React.ReactNode
+  className?: string
+  span?: number
+  style?: React.CSSProperties
 }
 
 const Col: React.FC<ColProps> = ({ children, className, span = 24, xs, sm, md, lg, xl, style }) => {
@@ -61,13 +62,16 @@ const Col: React.FC<ColProps> = ({ children, className, span = 24, xs, sm, md, l
     'xl:w-1/2': xl === 12,
     'xl:w-1/3': xl === 8,
     'xl:w-1/4': xl === 6,
-  });
+  })
 
   return (
-    <div className={clsx('box-border', getResponsiveClass(), className)} style={style}>
+    <div
+      className={classnames('box-border', getResponsiveClass(), className)}
+      style={style}
+    >
       {children}
     </div>
-  );
-};
+  )
+}
 
-export default Col;
+export default Col

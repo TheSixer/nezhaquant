@@ -5,7 +5,9 @@ import languageMiddleware from './middlewares/language'
 type Middleware = (req: NextRequest) => NextResponse | Promise<NextResponse | unknown> | unknown
 
 export const config = {
-  matcher: ['/((?!_next/static|_next/image|assets|favicon.ico|sw.js).*)'],
+  matcher: [
+    '/((?!_next/static|_next/image|assets|favicon.ico|sw.js|site|android-chrome|apple-touch|favicon-|font).*)',
+  ],
 }
 
 const middlewares: Middleware[] = [languageMiddleware]

@@ -8,7 +8,7 @@ import Footer from '@/components/Layout/Footer'
 import Header from '@/components/Layout/Header'
 import { serverTranslate } from '@/i18n/server'
 
-import { HeroUIProviders } from './[lang]/HeroUIProvider'
+import { HeroUIProviders } from './HeroUIProvider'
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -21,17 +21,17 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "Nezha Quant",
-  description: "Quantitative Trading Platform",
-  manifest: "/site.webmanifest",
+  title: 'Nezha Quant',
+  description: 'Quantitative Trading Platform',
+  manifest: '/site.webmanifest',
   icons: {
     icon: [
-      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" }
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
     ],
-    apple: "/apple-touch-icon.png"
-  }
-};
+    apple: '/apple-touch-icon.png',
+  },
+}
 
 export default async function RootLayout({
   children,

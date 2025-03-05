@@ -27,18 +27,21 @@ const Section: React.FC<{ data: I18nObject; dark?: boolean; titleAlign?: 'left' 
 
         <div
           className={classnames(
-            'flex flex-col md:flex-row',
-            data.cover ? 'gap-7 md:gap-[100px]' : 'gap-12',
+            data.cover
+              ? 'flex flex-col gap-7 md:flex-row md:gap-[100px]'
+              : 'grid grid-cols-12 gap-12',
           )}
         >
           {data.cover ? (
             <>
-              <Image
-                alt={data.title}
-                src={data.cover}
-                width={720}
-                height={380}
-              />
+              <div className="flex-1">
+                <Image
+                  alt={data.title}
+                  src={data.cover}
+                  width={720}
+                  height={380}
+                />
+              </div>
               <div className="mt-2 flex flex-1 flex-col text-lg md:mt-0">
                 {data.description ? (
                   <div className={classnames('h-16 border-b-1 text-xl', border)}>
@@ -66,7 +69,7 @@ const Section: React.FC<{ data: I18nObject; dark?: boolean; titleAlign?: 'left' 
               <div
                 key={item.title}
                 className={classnames(
-                  'mx-10 flex-1 items-center gap-4 px-12 py-10 md:mx-0',
+                  'col-span-12 mx-10 items-center gap-4 px-12 py-10 md:mx-0 lg:col-span-6 xl:col-span-3',
                   dark ? 'bg-foreground/10' : 'bg-background/5',
                 )}
               >
@@ -75,7 +78,12 @@ const Section: React.FC<{ data: I18nObject; dark?: boolean; titleAlign?: 'left' 
                   <div className="md:text-lg">{item.title}</div>
                 </div>
                 {item.description ? (
-                  <div className="text-sm leading-6 text-foreground/80 md:text-medium md:leading-8">
+                  <div
+                    className={classnames(
+                      'text-sm leading-6 md:text-medium md:leading-8',
+                      dark ? 'text-foreground/80' : 'text-background/80',
+                    )}
+                  >
                     {item.description[0]}
                   </div>
                 ) : null}

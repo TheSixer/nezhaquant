@@ -1,23 +1,24 @@
-import React from 'react';
-import clsx from 'clsx';
+import React from 'react'
+
+import { classnames } from '@/utils/classnames'
 
 interface RowProps {
-  children: React.ReactNode;
-  className?: string;
-  gutter?: number | [number, number];
+  children: React.ReactNode
+  className?: string
+  gutter?: number | [number, number]
 }
 
 interface ChildProps {
-  style?: React.CSSProperties;
+  style?: React.CSSProperties
 }
 
 const Row: React.FC<RowProps> = ({ children, className, gutter = 0 }) => {
-  const [horizontalGap, verticalGap] = Array.isArray(gutter) ? gutter : [gutter, 0];
-  const margin = horizontalGap ? -horizontalGap / 2 : 0;
+  const [horizontalGap, verticalGap] = Array.isArray(gutter) ? gutter : [gutter, 0]
+  const margin = horizontalGap ? -horizontalGap / 2 : 0
 
   return (
     <div
-      className={clsx('flex flex-wrap gap-y-5', className)}
+      className={classnames('flex flex-wrap gap-y-5', className)}
       style={{ margin: `${-verticalGap / 2}px ${margin}px` }}
     >
       {React.Children.map(children, (child) => {
@@ -30,12 +31,12 @@ const Row: React.FC<RowProps> = ({ children, className, gutter = 0 }) => {
               paddingBottom: verticalGap ? verticalGap / 2 : 0,
               ...child.props.style,
             },
-          });
+          })
         }
-        return child;
+        return child
       })}
     </div>
-  );
-};
+  )
+}
 
-export default Row;
+export default Row

@@ -54,13 +54,15 @@ const Content: React.FC = () => {
             {superiority.title}
           </div>
         </div>
-        <div className="flex flex-col gap-[100px] md:flex-row">
-          <Image
-            alt={superiority.title}
-            src={superiority.cover!}
-            width={720}
-            height={380}
-          />
+        <div className="flex flex-col md:flex-row md:gap-[100px]">
+          <div className="flex-1">
+            <Image
+              alt={superiority.title}
+              src={superiority.cover!}
+              width={720}
+              height={380}
+            />
+          </div>
           <div className="mt-2 flex flex-1 flex-col text-lg md:mt-0">
             {superiority.description.map((str) => (
               <div
