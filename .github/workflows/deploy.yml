@@ -75,13 +75,20 @@ jobs:
         
         # 使用 SSH 连接部署
         ssh -i private_key $SERVER_USER@$SERVER_HOST << EOF
-        # 加载 nvm 和设置 Node.js 版本
-        export NVM_DIR="/root/.nvm"
-        [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # 这将加载 nvm
-        nvm use 22.14.0  # 设置 Node.js 版本
+        # 确保 nvm 安装并加载
+        if [ ! -d "$HOME/.nvm" ]; then
+            echo "nvm not found, installing..."
+            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # 加载 nvm
+        fi
+
+        # 使用指定版本的 Node.js
+        nvm install 20
+        nvm use 20
 
         # 确保 npm 和 pm2 在 PATH 中
-        export PATH=$NVM_DIR/versions/node/v22.14.0/bin:$PATH
+        export PATH="$NVM_DIR/versions/node/v20/bin:$PATH"
 
         # 确保目标目录存在
         if [ -f "$APP_DIR" ]; then
