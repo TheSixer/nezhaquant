@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useParams, usePathname, useRouter, useSearchParams } from 'next/navigation'
-import { useCallback, useMemo } from 'react'
+import { Suspense, useCallback, useMemo } from 'react'
 
 import { useTranslation } from '@/i18n/client'
 import { languagesLabel } from '@/i18n/settings'
@@ -22,7 +22,7 @@ import {
   useDisclosure,
 } from '@heroui/react'
 
-const Header = () => {
+const HeaderCore = () => {
   const { t } = useTranslation('layout')
   const searchParams = useSearchParams()
   const { isOpen, onOpenChange, onClose } = useDisclosure()
@@ -170,6 +170,14 @@ const Header = () => {
         ))}
       </NavbarMenu>
     </Navbar>
+  )
+}
+
+const Header = () => {
+  return (
+    <Suspense>
+      <HeaderCore />
+    </Suspense>
   )
 }
 

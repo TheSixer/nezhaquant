@@ -1,10 +1,12 @@
 'use client'
 
+import * as motion from 'framer-motion/client'
 import Image from 'next/image'
 import { useMemo } from 'react'
 
 import Wrapper from '@/components/Layout/Wrapper'
 import { useTranslation } from '@/i18n/client'
+import { getGridVariant, leftElementVariants, rightElementVariants } from '@/utils/motion'
 
 const Content: React.FC = () => {
   const { t } = useTranslation('home')
@@ -21,11 +23,16 @@ const Content: React.FC = () => {
       <Wrapper dark={false}>
         <div className="text-title mb-8 text-[40px] text-primary">{service.title}</div>
         <div className="mb-16 leading-8 opacity-80">{service.description[0]}</div>
-        <div className="flex flex-col justify-between gap-9 md:flex-row">
-          {service.items?.map((item) => (
-            <div
+        <motion.div
+          className="flex flex-col justify-between gap-9 md:flex-row"
+          initial="offscreen"
+          whileInView="onscreen"
+        >
+          {service.items?.map((item, idx) => (
+            <motion.div
               key={item.title}
               className="mt-3 md:mt-0 md:w-[480px]"
+              variants={getGridVariant(idx)}
             >
               <Image
                 alt={item.title}
@@ -43,9 +50,9 @@ const Content: React.FC = () => {
                   {str}
                 </div>
               ))}
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </Wrapper>
 
       <Wrapper>
@@ -54,16 +61,26 @@ const Content: React.FC = () => {
             {superiority.title}
           </div>
         </div>
-        <div className="flex flex-col md:flex-row md:gap-[100px]">
-          <div className="flex-1">
+        <motion.div
+          initial="offscreen"
+          whileInView="onscreen"
+          className="flex flex-col md:flex-row md:gap-[100px]"
+        >
+          <motion.div
+            variants={leftElementVariants}
+            className="flex-1"
+          >
             <Image
               alt={superiority.title}
               src={superiority.cover!}
               width={720}
               height={380}
             />
-          </div>
-          <div className="mt-2 flex flex-1 flex-col text-lg md:mt-0">
+          </motion.div>
+          <motion.div
+            variants={rightElementVariants}
+            className="mt-2 flex flex-1 flex-col text-lg md:mt-0"
+          >
             {superiority.description.map((str) => (
               <div
                 key={str}
@@ -72,8 +89,8 @@ const Content: React.FC = () => {
                 {str}
               </div>
             ))}
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </Wrapper>
     </>
   )

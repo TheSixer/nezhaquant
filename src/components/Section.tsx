@@ -1,10 +1,12 @@
 'use client'
 
+import * as motion from 'framer-motion/client'
 import Image from 'next/image'
+import { useMemo } from 'react'
 
 import Wrapper from '@/components/Layout/Wrapper'
-import { useMemo } from 'react'
 import { classnames } from '@/utils/classnames'
+import { getGridVariant, leftElementVariants, rightElementVariants } from '@/utils/motion'
 
 const Section: React.FC<{ data: I18nObject; dark?: boolean; titleAlign?: 'left' | 'center' }> = ({
   data,
@@ -25,7 +27,9 @@ const Section: React.FC<{ data: I18nObject; dark?: boolean; titleAlign?: 'left' 
           <div className="text-title mb-5 text-2xl text-primary md:text-[40px]">{data.title}</div>
         )}
 
-        <div
+        <motion.div
+          initial="offscreen"
+          whileInView="onscreen"
           className={classnames(
             data.cover
               ? 'flex flex-col gap-7 md:flex-row md:gap-[100px]'
@@ -34,15 +38,21 @@ const Section: React.FC<{ data: I18nObject; dark?: boolean; titleAlign?: 'left' 
         >
           {data.cover ? (
             <>
-              <div className="flex-1">
+              <motion.div
+                className="flex-1"
+                variants={leftElementVariants}
+              >
                 <Image
                   alt={data.title}
                   src={data.cover}
                   width={720}
                   height={380}
                 />
-              </div>
-              <div className="mt-2 flex flex-1 flex-col text-lg md:mt-0">
+              </motion.div>
+              <motion.div
+                className="mt-2 flex flex-1 flex-col text-lg md:mt-0"
+                variants={rightElementVariants}
+              >
                 {data.description ? (
                   <div className={classnames('h-16 border-b-1 text-xl', border)}>
                     {data.description}
@@ -62,16 +72,17 @@ const Section: React.FC<{ data: I18nObject; dark?: boolean; titleAlign?: 'left' 
                     ) : null}
                   </div>
                 ))}
-              </div>
+              </motion.div>
             </>
           ) : (
             data.items?.map((item, idx) => (
-              <div
+              <motion.div
                 key={item.title}
                 className={classnames(
                   'col-span-12 mx-10 items-center gap-4 px-12 py-10 md:mx-0 lg:col-span-6 xl:col-span-3',
                   dark ? 'bg-foreground/10' : 'bg-background/5',
                 )}
+                variants={getGridVariant(idx)}
               >
                 <div className="mb-6 flex h-14 items-center text-lg">
                   <div className="text-title mr-1 w-6 text-4xl text-primary">{idx + 1}</div>
@@ -87,10 +98,10 @@ const Section: React.FC<{ data: I18nObject; dark?: boolean; titleAlign?: 'left' 
                     {item.description[0]}
                   </div>
                 ) : null}
-              </div>
+              </motion.div>
             ))
           )}
-        </div>
+        </motion.div>
       </Wrapper>
     </>
   )
