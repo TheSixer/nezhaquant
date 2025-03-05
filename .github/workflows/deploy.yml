@@ -19,9 +19,11 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: '20' # 设置项目所需的 Node.js 版本
-        cache: 'pnpm'
-    - run: npm install -g pnpm
-    - run: pnpm install
+        cache: 'pnpm-store'
+
+    # 安装 pnpm
+    - name: Install pnpm
+      run: npm install -g pnpm
 
     # 安装依赖
     - name: Install dependencies
@@ -59,7 +61,11 @@ jobs:
       run: |
         echo "$SSH_PRIVATE_KEY" > private_key
         chmod 600 private_key
+
+        # 传输文件
         scp -i private_key nezha-quant.tar.gz $SERVER_USER@$SERVER_HOST:$APP_DIR
+        
+        # 使用 SSH 连接部署
         ssh -i private_key $SERVER_USER@$SERVER_HOST << EOF
         # 确保目标目录存在
         mkdir -p $APP_DIR
@@ -70,10 +76,23 @@ jobs:
         # 解压文件
         tar --overwrite -xzf nezha-quant.tar.gz
         
+        # 确保安装 pm2 和 pnpm
+        if ! command -v pm2 &> /dev/null; then
+            echo "pm2 not found, installing..."
+            npm install -g pm2
+        fi
+        if ! command -v pnpm &> /dev/null; then
+            echo "pnpm not found, installing..."
+            npm install -g pnpm
+        fi
+        
         # 安装生产依赖
         pnpm install --production
         
-        # 重启或启动应用
+        # 启动应用
         pm2 delete "nezha-quant" || true
-        pm2 start pnpm --name "nezha-quant" -- start
+        pm2 start "pnpm run start" --name "nezha-quant"
         EOF
+        
+        # 清理私钥
+        rm -f private_key
