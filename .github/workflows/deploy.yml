@@ -76,10 +76,10 @@ jobs:
         # 使用 SSH 连接部署
         ssh -i private_key $SERVER_USER@$SERVER_HOST << EOF
         # 确保目标目录存在
-        mkdir -p $APP_DIR
-        
-        # 切换到目标目录
-        cd $APP_DIR
+        if [ -f "$APP_DIR" ]; then
+          rm -f $APP_DIR  # 删除已存在的文件
+        fi
+        mkdir -p $APP_DIR  # 创建目录
         
         # 解压文件
         tar --overwrite -xzf nezha-quant.tar.gz
