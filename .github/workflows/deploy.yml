@@ -48,14 +48,9 @@ jobs:
     # 使用 ssh-keyscan 添加目标服务器的主机密钥
     - name: Add SSH Host Key
       run: |
-        # 创建 ~/.ssh 目录（如果不存在）
         mkdir -p ~/.ssh
         chmod 700 ~/.ssh
-
-        # 使用 ssh-keyscan 添加主机密钥
         ssh-keyscan -H ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts
-
-        # 检查 known_hosts 文件内容（用于调试）
         echo "Contents of known_hosts:"
         cat ~/.ssh/known_hosts
 
@@ -71,52 +66,4 @@ jobs:
         chmod 600 private_key
 
         # 传输文件
-        scp -i private_key nezha-quant.tar.gz $SERVER_USER@$SERVER_HOST:$APP_DIR
-        
-        # 使用 SSH 连接部署
-        ssh -i private_key $SERVER_USER@$SERVER_HOST << EOF
-        # 确保 nvm 安装并加载
-        if [ ! -d "$HOME/.nvm" ]; then
-            echo "nvm not found, installing..."
-            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-            export NVM_DIR="$HOME/.nvm"
-            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # 加载 nvm
-        fi
-
-        # 使用指定版本的 Node.js
-        nvm install 20
-        nvm use 20
-
-        # 确保 npm 和 pm2 在 PATH 中
-        export PATH="$NVM_DIR/versions/node/v20/bin:$PATH"
-
-        # 确保目标目录存在
-        if [ -f "$APP_DIR" ]; then
-          rm -f $APP_DIR  # 删除已存在的文件
-        fi
-        mkdir -p $APP_DIR  # 创建目标目录
-        cd $APP_DIR
-
-        # 解压文件
-        tar --overwrite -xzf nezha-quant.tar.gz
-        
-        # 确保安装 pm2 和 pnpm
-        if ! command -v pm2 &> /dev/null; then
-            echo "pm2 not found, installing..."
-            npm install -g pm2
-        fi
-        if ! command -v pnpm &> /dev/null; then
-            echo "pnpm not found, installing..."
-            npm install -g pnpm
-        fi
-        
-        # 安装生产依赖
-        pnpm install --production
-        
-        # 启动应用
-        pm2 delete "nezha-quant" || true
-        pm2 start "pnpm run start" --name "nezha-quant"
-        EOF
-        
-        # 清理私钥
-        rm -f private_key
+        scp -i private_key nez
