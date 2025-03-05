@@ -60,7 +60,7 @@ jobs:
         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         SERVER_HOST: ${{ secrets.SERVER_HOST }}
         SERVER_USER: ${{ secrets.SERVER_USER }}
-        APP_DIR: ${{ secrets.APP_DIR }}
+        APP_DIR: ${{ secrets.APP_DIR }}  # 确保 APP_DIR 已正确设置
       run: |
         echo "$SSH_PRIVATE_KEY" > private_key
         chmod 600 private_key
@@ -69,6 +69,12 @@ jobs:
         echo "SERVER_USER: $SERVER_USER"
         echo "SERVER_HOST: $SERVER_HOST"
         echo "APP_DIR: $APP_DIR"
+
+        # 检查 APP_DIR 是否为空
+        if [ -z "$APP_DIR" ]; then
+          echo "Error: APP_DIR is not set."
+          exit 1
+        fi
 
         # 传输文件
         scp -i private_key nezha-quant.tar.gz $SERVER_USER@$SERVER_HOST:$APP_DIR
@@ -121,7 +127,7 @@ jobs:
 
         # 启动应用
         pm2 delete "nezha-quant" || true
-        pm2 start "pnpm run start" --name "nezha-quant" --cwd $APP_DIR
+        pm2 start "pnpm run start" --name "nezha-quant" --cwd "$APP_DIR"
         EOF
         
         # 清理私钥
