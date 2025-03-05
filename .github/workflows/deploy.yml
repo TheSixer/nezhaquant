@@ -19,6 +19,9 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: '20' # 设置项目所需的 Node.js 版本
+        cache: 'pnpm'
+    - run: npm install -g pnpm
+    - run: pnpm install
 
     # 安装依赖
     - name: Install dependencies
