@@ -1,0 +1,76 @@
+name: Deploy NeZha Quant Website To Cloud
+
+on:
+  push:
+    branches:
+      - main  # 监听 main 分支的变动
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    # 检出代码
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # 设置 Node.js 版本
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20' # 设置项目所需的 Node.js 版本
+
+    # 安装依赖
+    - name: Install dependencies
+      run: pnpm install
+
+    # 构建 Next.js 项目
+    - name: Build Next.js project
+      run: pnpm build
+
+    # 打包文件
+    - name: Archive production files
+      run: tar -czf nezha-quant.tar.gz .next public package.json pnpm-lock.yaml
+
+    # 使用 ssh-keyscan 添加目标服务器的主机密钥
+    - name: Add SSH Host Key
+      run: |
+        # 创建 ~/.ssh 目录（如果不存在）
+        mkdir -p ~/.ssh
+        chmod 700 ~/.ssh
+
+        # 使用 ssh-keyscan 添加主机密钥
+        ssh-keyscan -H ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts
+
+        # 检查 known_hosts 文件内容（用于调试）
+        echo "Contents of known_hosts:"
+        cat ~/.ssh/known_hosts
+
+    # 将文件部署到阿里云
+    - name: Deploy to Alibaba Cloud
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        SERVER_HOST: ${{ secrets.SERVER_HOST }}
+        SERVER_USER: ${{ secrets.SERVER_USER }}
+        APP_DIR: ${{ secrets.APP_DIR }}
+      run: |
+        echo "$SSH_PRIVATE_KEY" > private_key
+        chmod 600 private_key
+        scp -i private_key nezha-quant.tar.gz $SERVER_USER@$SERVER_HOST:$APP_DIR
+        ssh -i private_key $SERVER_USER@$SERVER_HOST << EOF
+        # 确保目标目录存在
+        mkdir -p $APP_DIR
+        
+        # 切换到目标目录
+        cd $APP_DIR
+        
+        # 解压文件
+        tar --overwrite -xzf nezha-quant.tar.gz
+        
+        # 安装生产依赖
+        pnpm install --production
+        
+        # 重启或启动应用
+        pm2 delete "nezha-quant" || true
+        pm2 start pnpm --name "nezha-quant" -- start
+        EOF
