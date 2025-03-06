@@ -4,6 +4,7 @@ import React, { useMemo } from 'react'
 
 import styles from './styles.module.scss'
 import { classnames } from '@/utils/classnames'
+import Image from 'next/image'
 
 const Banner: React.FC<React.PropsWithChildren<{ image?: string; extraImage?: string }>> = ({
   image,
@@ -22,17 +23,26 @@ const Banner: React.FC<React.PropsWithChildren<{ image?: string; extraImage?: st
   }, [extraImage, image])
 
   return (
-    <div className="sticky top-[100px] h-48 md:h-[760px]">
+    <div className="sticky top-[100px]">
       {extraImage ? (
         <div
           style={background.extra}
           className={classnames('absolute left-0 top-0 h-full w-full', styles['overlay-extra'])}
         />
       ) : null}
-      <div
+      {/* <div
         style={background.main}
         className={classnames('absolute left-0 top-0 h-full w-full', styles['overlay-main'])}
-      />
+      /> */}
+      {image && (
+        <Image
+          src={image}
+          alt="Nezha Quant"
+          className="w-full h-auto"
+          width={1000}
+          height={1000}
+        />
+      )}
       {children}
     </div>
   )

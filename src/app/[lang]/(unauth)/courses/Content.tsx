@@ -9,6 +9,7 @@ import Wrapper from '@/components/Layout/Wrapper'
 import Section from '@/components/Section'
 import { useTranslation } from '@/i18n/client'
 import { bottomElementVariants, getGridVariant, topElementVariants } from '@/utils/motion'
+import Link from 'next/link'
 
 const Content: React.FC = () => {
   const { t } = useTranslation('courses')
@@ -28,7 +29,7 @@ const Content: React.FC = () => {
         <div className="text-title mb-8 text-[40px] text-primary">{courses.title}</div>
         <div className="mb-16 leading-8 opacity-80">{courses.description[0]}</div>
         <motion.div
-          className="flex flex-col justify-between gap-9 overflow-hidden md:flex-row"
+          className="flex flex-col justify-around gap-9 overflow-hidden md:flex-row"
           initial="offscreen"
           whileInView="onscreen"
         >
@@ -38,16 +39,22 @@ const Content: React.FC = () => {
               className="mt-3 md:mt-0 md:w-[480px]"
             >
               <motion.div variants={topElementVariants}>
-                <Image
-                  alt={item.title}
-                  src={item.cover!}
-                  width={480}
-                  height={300}
-                  className="w-full"
-                />
+                <Link href={item.link!} target="_blank">
+                  <Image
+                    alt={item.title}
+                    src={item.cover!}
+                    width={480}
+                    height={300}
+                    className="w-full"
+                  />
+                </Link>
               </motion.div>
               <motion.div variants={bottomElementVariants}>
-                <div className="my-5 text-sm md:text-lg">{item.title}</div>
+                <div className="my-5 text-sm md:text-lg">
+                  <Link href={item.link!} target="_blank" className="hover:underline">
+                    {item.title}
+                  </Link>
+                </div>
                 {item.description.map((str) => (
                   <div
                     key={str}

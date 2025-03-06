@@ -1,16 +1,12 @@
 'use client'
 
 import Image from 'next/image'
-import { useParams } from 'next/navigation'
 import { useMemo } from 'react'
 
 import { useTranslation } from '@/i18n/client'
 import {
-  faDiscord,
-  faFacebookF,
-  faInstagram,
-  faXTwitter,
-  faYoutube,
+  faTiktok,
+  faWhatsapp,
 } from '@fortawesome/free-brands-svg-icons'
 import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -18,7 +14,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import BorderedButton from '../Button'
 
 const Footer = () => {
-  const { lang } = useParams<{ lang: string }>()
   const { t } = useTranslation('layout')
   const footerI18n = useMemo(() => t('footer.slogan', { returnObjects: true }) as string[], [t])
 
@@ -41,22 +36,37 @@ const Footer = () => {
           </div>
           <div className="mt-12 flex flex-col gap-6 text-xl md:px-8 md:text-2xl">
             <div className="flex items-center gap-4">
-              <div className="h-8 w-8 text-center">
-                <FontAwesomeIcon icon={faEnvelope} />
-              </div>
-              support@nezhaquant.com
+              <FontAwesomeIcon icon={faEnvelope} size="sm" />
+                <a href="mailto:NeZhaQuant.services@gmail.com" className="text-md" target="_blank">
+                NeZhaQuant.services@gmail.com
+              </a>
             </div>
             <div className="flex items-center gap-4">
-              <div className="h-8 w-8 text-center">
-                <FontAwesomeIcon icon={faDiscord} />
-              </div>
-              support@nezhaquant.com
+              <FontAwesomeIcon icon={faPhone} size="sm" />
+              <a href="tel:+61490470976" className="text-md" target="_blank">+61 490470976</a>
             </div>
-            <div className="flex items-center gap-4">
-              <div className="h-8 w-8 text-center">
-                <FontAwesomeIcon icon={faPhone} />
-              </div>
-              18763548908
+            <div className="mt-4 flex items-center gap-8 text-2xl">
+              {/* <a href="https://www.instagram.com/nezhaquant/" target="_blank">
+                <FontAwesomeIcon icon={faInstagram} />
+              </a> */}
+              {/* <a href="https://www.facebook.com/profile.php?id=61561484344142" target="_blank">
+                <FontAwesomeIcon icon={faFacebookF} />
+              </a> */}
+              <a href="https://t.me/NeZhaQuant" target="_blank">
+                <i className="tmrwdao-icon-telegram text-2xl text-inherit"></i>
+              </a>
+              <a href="https://x.com/NeZhaQuant" target="_blank">
+                <i className="tmrwdao-icon-twitter text-2xl text-inherit"></i>
+              </a>
+              <a href="https://wa.me/61490470976" target="_blank">
+                <FontAwesomeIcon icon={faWhatsapp} size="sm" />
+              </a>
+              <a href="https://www.tiktok.com/@nezhaquant" target="_blank">
+                <FontAwesomeIcon icon={faTiktok} size="sm" />
+              </a>
+              {/* <a href="https://www.youtube.com/@NeZhaQuant" target="_blank">
+                <FontAwesomeIcon icon={faYoutube} />
+              </a> */}
             </div>
           </div>
         </div>
@@ -67,14 +77,6 @@ const Footer = () => {
           >
             {t('contactUs')}
           </BorderedButton>
-          {lang !== 'zh-CN' ? (
-            <div className="mt-8 flex items-center gap-8 text-2xl">
-              <FontAwesomeIcon icon={faInstagram} />
-              <FontAwesomeIcon icon={faFacebookF} />
-              <FontAwesomeIcon icon={faXTwitter} />
-              <FontAwesomeIcon icon={faYoutube} />
-            </div>
-          ) : null}
         </div>
       </div>
     </div>

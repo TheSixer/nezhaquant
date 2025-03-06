@@ -14,7 +14,9 @@ const BorderedButton: React.FC<ButtonProps> = ({ children, className, ...props }
       {...props}
       className={classnames(styles['bordered-button'], 'border-1', className)}
     >
-      {children}
+      <a href="mailto:nezhaquant.services@gmail.com" target="_blank">
+        {children}
+      </a>
     </Button>
   )
 }
