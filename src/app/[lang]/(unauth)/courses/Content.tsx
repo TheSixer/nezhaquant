@@ -28,7 +28,7 @@ const Content: React.FC = () => {
         <div className="text-title mb-8 text-[40px] text-primary">{courses.title}</div>
         <div className="mb-16 leading-8 opacity-80">{courses.description[0]}</div>
         <motion.div
-          className="flex flex-col justify-between gap-9 md:flex-row"
+          className="flex flex-col justify-between gap-9 overflow-hidden md:flex-row"
           initial="offscreen"
           whileInView="onscreen"
         >
@@ -78,7 +78,7 @@ const Content: React.FC = () => {
           </div>
         </div>
         <motion.div
-          className="flex flex-col justify-between gap-9 md:flex-row"
+          className="flex flex-col justify-between gap-9 overflow-hidden md:flex-row"
           initial="offscreen"
           whileInView="onscreen"
         >

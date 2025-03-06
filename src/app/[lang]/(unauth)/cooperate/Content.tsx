@@ -46,7 +46,7 @@ const Content: React.FC = () => {
           <div className="text-title mb-4 text-2xl text-primary md:mb-8 md:text-[40px]">
             {mission.title}
           </div>
-          <div className="flex flex-col gap-6 leading-8 text-primary opacity-80">
+          <div className="flex flex-col gap-6 leading-8 text-background opacity-80">
             {mission.description.map((str) => (
               <div key={str}>{str}</div>
             ))}
@@ -62,7 +62,7 @@ const Content: React.FC = () => {
           <div className="text-title mb-4 text-2xl text-primary md:mb-8 md:text-[40px]">
             {vision.title}
           </div>
-          <div className="flex flex-col gap-6 leading-8 text-primary opacity-80">
+          <div className="flex flex-col gap-6 leading-8 text-background opacity-80">
             {vision.description.map((str) => (
               <div key={str}>{str}</div>
             ))}

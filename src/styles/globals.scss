@@ -11,9 +11,8 @@
 }
 
 body {
-  font-family: 思源黑体;
+  // font-family: 思源黑体;
   min-height: 100vh;
-  overflow-x: hidden;
   color: var(--foreground);
   background: var(--background);
   -webkit-font-smoothing: antialiased; /* 对 macOS Safari 较有效 */

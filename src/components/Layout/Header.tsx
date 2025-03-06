@@ -71,6 +71,7 @@ const Header = () => {
         wrapper: 'max-w-[1520px] md:px-12',
       }}
       isMenuOpen={isOpen}
+      onMenuOpenChange={onOpenChange}
       height="100px"
     >
       <NavbarBrand>
@@ -138,23 +139,21 @@ const Header = () => {
       ) : null}
 
       <NavbarMenuToggle
-        aria-label={isOpen ? 'Close menu' : 'Open menu'}
         className="md:hidden"
         icon={(isOpen) => (
           <FontAwesomeIcon
             className="text-xl text-primary"
             icon={isOpen ? faXmark : faBars}
-            onClick={onOpenChange}
           />
         )}
       />
 
-      <NavbarMenu className="bg-background p-0">
+      <NavbarMenu>
         {navItems.map((item) => (
           <NavbarMenuItem key={item.name}>
             <div
               onClick={handleClick(item)}
-              className="flex h-14 cursor-pointer items-center justify-between border-b-2 border-foreground px-4 text-lg hover:text-primary"
+              className="flex h-14 cursor-pointer items-center justify-between border-b-1 border-foreground px-4 text-lg hover:text-primary"
             >
               <div
                 className={isActive(item.pathname) ? 'border-b-2 border-primary pb-0.5' : undefined}

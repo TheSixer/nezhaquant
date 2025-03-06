@@ -23,8 +23,8 @@ const Footer = () => {
   const footerI18n = useMemo(() => t('footer.slogan', { returnObjects: true }) as string[], [t])
 
   return (
-    <div className="w-full border-t-[20px] border-t-primary px-8 py-16 md:border-t-[40px] md:px-[200px] md:py-20">
-      <div className="flex flex-col justify-between gap-9 md:flex-row">
+    <div className="w-full border-t-[20px] border-t-primary px-8 py-16 md:border-t-[40px] md:px-[48px] xl:px-[200px] md:py-20">
+      <div className="flex flex-col justify-between gap-9 lg:flex-row">
         <div>
           <div className="flex items-center gap-2">
             <Image
@@ -39,7 +39,7 @@ const Footer = () => {
               <div className="text-sm md:text-xl">{footerI18n[1]}</div>
             </div>
           </div>
-          <div className="mt-12 flex flex-col gap-6 text-2xl md:px-8">
+          <div className="mt-12 flex flex-col gap-6 text-xl md:px-8 md:text-2xl">
             <div className="flex items-center gap-4">
               <div className="h-8 w-8 text-center">
                 <FontAwesomeIcon icon={faEnvelope} />

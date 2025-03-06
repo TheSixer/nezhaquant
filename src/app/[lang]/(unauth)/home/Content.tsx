@@ -29,7 +29,7 @@ const Content: React.FC = () => {
         <div className="text-title mb-8 text-[40px] text-primary">{service.title}</div>
         <div className="mb-16 leading-8 opacity-80">{service.description[0]}</div>
         <motion.div
-          className="flex flex-col justify-between gap-9 md:flex-row"
+          className="flex flex-col justify-between gap-9 overflow-hidden md:flex-row"
           initial="offscreen"
           whileInView="onscreen"
         >
@@ -48,7 +48,7 @@ const Content: React.FC = () => {
                 />
               </motion.div>
               <motion.div variants={bottomElementVariants}>
-                <div className="my-5 text-sm md:text-lg">{item.title}</div>
+                <div className="my-5 text-sm md:text-lg font-bold">{item.title}</div>
                 {item.description.map((str) => (
                   <div
                     key={str}
@@ -72,7 +72,7 @@ const Content: React.FC = () => {
         <motion.div
           initial="offscreen"
           whileInView="onscreen"
-          className="flex flex-col md:flex-row md:gap-[100px]"
+          className="flex flex-col overflow-hidden md:flex-row md:gap-[100px]"
         >
           <motion.div
             variants={leftElementVariants}
