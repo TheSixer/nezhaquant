@@ -77,6 +77,12 @@ const Footer = () => {
           >
             {t('contactUs')}
           </BorderedButton>
+
+          <div className="mt-12 flex justify-center items-center gap-6">
+            <a href="dingtalk://dingtalkclient/action/sendmsg?dingtalk_id=nezhalianghua" target="_blank">
+              <Image src="/assets/images/logo.svg" alt="钉钉" width={200} height={200} />
+            </a>
+          </div>
         </div>
       </div>
     </div>

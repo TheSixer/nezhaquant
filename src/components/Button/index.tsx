@@ -12,7 +12,7 @@ const BorderedButton: React.FC<ButtonProps> = ({ children, className, ...props }
       variant="bordered"
       radius="none"
       {...props}
-      className={classnames(styles['bordered-button'], 'border-1', className)}
+      className={classnames(styles['bordered-button'], 'border-1 font-bold hover:text-white', className)}
     >
       <a href="mailto:nezhaquant.services@gmail.com" target="_blank">
         {children}
