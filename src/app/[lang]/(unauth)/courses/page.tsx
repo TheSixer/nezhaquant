@@ -1,4 +1,4 @@
-import Main from '@/components/layout/Main'
+import Main from '@/components/Layout/Main'
 
 import Banner from './Banner'
 import Courses from './Content'
