@@ -1,5 +1,6 @@
 'use client'
 
+import * as motion from 'framer-motion/client'
 import Image from 'next/image'
 import { useMemo } from 'react'
 
@@ -7,6 +8,7 @@ import BorderedButton from '@/components/Button'
 import Wrapper from '@/components/Layout/Wrapper'
 import Section from '@/components/Section'
 import { useTranslation } from '@/i18n/client'
+import { bottomElementVariants, getGridVariant, topElementVariants } from '@/utils/motion'
 
 const Content: React.FC = () => {
   const { t } = useTranslation('courses')
@@ -25,31 +27,39 @@ const Content: React.FC = () => {
       <Wrapper dark={false}>
         <div className="text-title mb-8 text-[40px] text-primary">{courses.title}</div>
         <div className="mb-16 leading-8 opacity-80">{courses.description[0]}</div>
-        <div className="flex flex-col justify-between gap-9 md:flex-row">
+        <motion.div
+          className="flex flex-col justify-between gap-9 md:flex-row"
+          initial="offscreen"
+          whileInView="onscreen"
+        >
           {courses.items?.map((item) => (
             <div
               key={item.title}
               className="mt-3 md:mt-0 md:w-[480px]"
             >
-              <Image
-                alt={item.title}
-                src={item.cover!}
-                width={480}
-                height={300}
-                className="w-full"
-              />
-              <div className="my-5 text-sm md:text-lg">{item.title}</div>
-              {item.description.map((str) => (
-                <div
-                  key={str}
-                  className="text-sm leading-8 text-background/60"
-                >
-                  {str}
-                </div>
-              ))}
+              <motion.div variants={topElementVariants}>
+                <Image
+                  alt={item.title}
+                  src={item.cover!}
+                  width={480}
+                  height={300}
+                  className="w-full"
+                />
+              </motion.div>
+              <motion.div variants={bottomElementVariants}>
+                <div className="my-5 text-sm md:text-lg">{item.title}</div>
+                {item.description.map((str) => (
+                  <div
+                    key={str}
+                    className="text-sm leading-8 text-background/60"
+                  >
+                    {str}
+                  </div>
+                ))}
+              </motion.div>
             </div>
           ))}
-        </div>
+        </motion.div>
       </Wrapper>
 
       <Section
@@ -67,11 +77,16 @@ const Content: React.FC = () => {
             {free.title}
           </div>
         </div>
-        <div className="flex flex-col justify-between gap-9 md:flex-row">
-          {free.items?.map((item) => (
-            <div
+        <motion.div
+          className="flex flex-col justify-between gap-9 md:flex-row"
+          initial="offscreen"
+          whileInView="onscreen"
+        >
+          {free.items?.map((item, idx) => (
+            <motion.div
               key={item.title}
               className="mt-3 flex-1 md:mt-0 md:w-[480px]"
+              variants={getGridVariant(idx)}
             >
               <Image
                 alt={item.title}
@@ -87,9 +102,9 @@ const Content: React.FC = () => {
                   {t('signUp')}
                 </BorderedButton>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </Wrapper>
     </>
   )

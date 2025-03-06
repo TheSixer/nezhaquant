@@ -28,13 +28,15 @@ const Content: React.FC = () => {
       <Wrapper dark={false}>
         <div className="text-title mb-8 text-[40px] text-primary">{service.title}</div>
         <div className="mb-16 leading-8 opacity-80">{service.description[0]}</div>
-        <div className="flex flex-col justify-between gap-9 md:flex-row">
+        <motion.div
+          className="flex flex-col justify-between gap-9 md:flex-row"
+          initial="offscreen"
+          whileInView="onscreen"
+        >
           {service.items?.map((item) => (
-            <motion.div
+            <div
               key={item.title}
               className="mt-3 md:mt-0 md:w-[480px]"
-              initial="offscreen"
-              whileInView="onscreen"
             >
               <motion.div variants={topElementVariants}>
                 <Image
@@ -56,9 +58,9 @@ const Content: React.FC = () => {
                   </div>
                 ))}
               </motion.div>
-            </motion.div>
+            </div>
           ))}
-        </div>
+        </motion.div>
       </Wrapper>
 
       <Wrapper>

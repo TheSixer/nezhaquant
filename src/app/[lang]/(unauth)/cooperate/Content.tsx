@@ -34,12 +34,14 @@ const Content: React.FC = () => {
         dark={false}
         className="flex flex-col gap-7 md:flex-row md:gap-[100px]"
       >
-        <Image
-          src="/assets/images/cooperate-1.png"
-          width={738}
-          height={380}
-          alt="cooperate"
-        />
+        <div>
+          <Image
+            src="/assets/images/cooperate-1.png"
+            width={738}
+            height={380}
+            alt="cooperate"
+          />
+        </div>
         <div>
           <div className="text-title mb-4 text-2xl text-primary md:mb-8 md:text-[40px]">
             {mission.title}
@@ -66,12 +68,14 @@ const Content: React.FC = () => {
             ))}
           </div>
         </div>
-        <Image
-          src="/assets/images/cooperate-2.png"
-          width={738}
-          height={380}
-          alt="cooperate"
-        />
+        <div>
+          <Image
+            src="/assets/images/cooperate-2.png"
+            width={738}
+            height={380}
+            alt="cooperate"
+          />
+        </div>
       </Wrapper>
     </>
   )
