@@ -2,7 +2,7 @@
   "立即定制": "立即定制",
   "风火轮": {
     "title": "风火轮 100X AI",
-    "description": ["终极单边捕捉量化系统"],
+    "description": ["FireWheel 100X AI —— 终极单边捕捉量化系统"],
     "cover": "/assets/images/products-1.png",
     "items": [
       {
@@ -17,13 +17,13 @@
       },
       {
         "title": "核心优势",
-        "description": ["采用深度强化学习，与市场动量智能追踪，自动筛选最具爆发潜力的交易品种"]
+        "description": ["采用深度强化学习（Deep Reinforcement Learning, DRL）与市场动量智能追踪（Momentum Intelligence），自动筛选最具爆发潜力的交易品种"]
       }
     ]
   },
   "混天绫": {
-    "title": "混天绫1%",
-    "description": ["以柔克刚，稳定增长，每天1%的复利奇迹！"],
+    "title": "混天绫 1%",
+    "description": ["Hun Tian Ling 1% —— 以柔克刚，稳定增长，每天1%的复利奇迹！"],
     "cover": "/assets/images/products-2.png",
     "items": [
       {

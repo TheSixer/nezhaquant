@@ -65,7 +65,7 @@ const Section: React.FC<{ data: I18nObject; dark?: boolean; titleAlign?: 'left' 
                     className={classnames('items-center gap-4 border-b-1 py-4', border)}
                   >
                     <div className="mb-4 flex items-baseline text-lg">
-                      <div className="text-title">{idx + 1}</div>
+                      <div className="text-title text-primary">{idx + 1}</div>
                       <div className="md:text-lg">{item.title}</div>
                     </div>
                     {item.description ? (
