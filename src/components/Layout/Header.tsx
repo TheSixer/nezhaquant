@@ -2,8 +2,8 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { useParams, usePathname, useRouter, useSearchParams } from 'next/navigation'
-import { Suspense, useCallback, useMemo } from 'react'
+import { useParams, usePathname, useRouter } from 'next/navigation'
+import { useCallback, useMemo } from 'react'
 
 import { useTranslation } from '@/i18n/client'
 import { languagesLabel } from '@/i18n/settings'
@@ -22,9 +22,8 @@ import {
   useDisclosure,
 } from '@heroui/react'
 
-const HeaderCore = () => {
+const Header = () => {
   const { t } = useTranslation('layout')
-  const searchParams = useSearchParams()
   const { isOpen, onOpenChange, onClose } = useDisclosure()
   const pathname = usePathname()
   const { lang } = useParams<{ lang: string }>()
@@ -53,12 +52,10 @@ const HeaderCore = () => {
   )
 
   const switchLang = useCallback(() => {
-    const search = searchParams.toString()
-
     router.replace(
-      `/${lang === 'zh-CN' ? 'en' : 'zh-CN'}/${pathname.split('/').slice(2).join('/')}${search ? `?${search}` : ''}`,
+      `/${lang === 'zh-CN' ? 'en' : 'zh-CN'}/${pathname.split('/').slice(2).join('/')}`,
     )
-  }, [searchParams, router, lang, pathname])
+  }, [router, lang, pathname])
 
   const isActive = useCallback(
     (name: string) => {
@@ -70,18 +67,17 @@ const HeaderCore = () => {
 
   return (
     <Navbar
-      maxWidth="2xl"
-      classNames={{
-        wrapper: 'max-w-[1520px] h-[100px] md:px-12',
-      }}
-      className="bg-background"
+      // classNames={{
+      //   wrapper: 'max-w-[1520px] h-[100px] md:px-12',
+      // }}
       isMenuOpen={isOpen}
       height="100px"
-      onMenuOpenChange={onOpenChange}
-      isBlurred={false}
     >
       <NavbarBrand>
-        <div className="flex items-center gap-2">
+        <Link
+          href="/"
+          className="flex items-center gap-2"
+        >
           <Image
             width={88}
             height={48}
@@ -89,11 +85,11 @@ const HeaderCore = () => {
             alt="Nezha Quant"
             className="h-[24px] w-[44px] md:h-[48px] md:w-[88px]"
           />
-        </div>
-        <div className="text-title text-xl text-primary md:text-4xl">{t('siteName')}</div>
+          <div className="text-title text-xl text-primary md:text-4xl">{t('siteName')}</div>
+        </Link>
       </NavbarBrand>
       <NavbarContent
-        className="hidden gap-6 md:flex"
+        className="hidden gap-16 md:flex"
         justify="end"
       >
         {navItems.map((item) => (
@@ -114,30 +110,32 @@ const HeaderCore = () => {
         ))}
       </NavbarContent>
 
-      <NavbarContent
-        justify="end"
-        className="md:hidden"
-      >
-        <NavbarItem>
-          <Button
-            color="primary"
-            variant="light"
-            onPress={switchLang}
-          >
-            {languagesLabel.map((lg, idx) => (
-              <div
-                key={lg.lang}
-                className="flex items-center gap-2"
-              >
-                {idx ? <div className="h-4 w-[1px] bg-foreground" /> : null}
-                <span className={lang === lg.lang ? 'text-primary' : 'text-foreground'}>
-                  {lg.label}
-                </span>
-              </div>
-            ))}
-          </Button>
-        </NavbarItem>
-      </NavbarContent>
+      {languagesLabel.length ? (
+        <NavbarContent
+          justify="end"
+          className="md:hidden"
+        >
+          <NavbarItem>
+            <Button
+              color="primary"
+              variant="light"
+              onPress={switchLang}
+            >
+              {languagesLabel.map((lg, idx) => (
+                <div
+                  key={lg.lang}
+                  className="flex items-center gap-2"
+                >
+                  {idx ? <div className="h-4 w-[1px] bg-foreground" /> : null}
+                  <span className={lang === lg.lang ? 'text-primary' : 'text-foreground'}>
+                    {lg.label}
+                  </span>
+                </div>
+              ))}
+            </Button>
+          </NavbarItem>
+        </NavbarContent>
+      ) : null}
 
       <NavbarMenuToggle
         aria-label={isOpen ? 'Close menu' : 'Open menu'}
@@ -146,6 +144,7 @@ const HeaderCore = () => {
           <FontAwesomeIcon
             className="text-xl text-primary"
             icon={isOpen ? faXmark : faBars}
+            onClick={onOpenChange}
           />
         )}
       />
@@ -155,9 +154,7 @@ const HeaderCore = () => {
           <NavbarMenuItem key={item.name}>
             <div
               onClick={handleClick(item)}
-              className={classnames(
-                'flex h-14 cursor-pointer items-center justify-between border-b-2 border-foreground px-4 text-lg hover:text-primary',
-              )}
+              className="flex h-14 cursor-pointer items-center justify-between border-b-2 border-foreground px-4 text-lg hover:text-primary"
             >
               <div
                 className={isActive(item.pathname) ? 'border-b-2 border-primary pb-0.5' : undefined}
@@ -170,14 +167,6 @@ const HeaderCore = () => {
         ))}
       </NavbarMenu>
     </Navbar>
-  )
-}
-
-const Header = () => {
-  return (
-    <Suspense>
-      <HeaderCore />
-    </Suspense>
   )
 }
 

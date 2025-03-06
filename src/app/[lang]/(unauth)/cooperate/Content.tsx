@@ -56,7 +56,7 @@ const Content: React.FC = () => {
 
       <Wrapper
         dark={false}
-        className="flex flex-col gap-7 md:flex-row md:gap-[100px]"
+        className="flex flex-col-reverse gap-7 md:flex-row md:gap-[100px]"
       >
         <div>
           <div className="text-title mb-4 text-2xl text-primary md:mb-8 md:text-[40px]">

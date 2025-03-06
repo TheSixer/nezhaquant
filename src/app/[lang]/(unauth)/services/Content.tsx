@@ -31,6 +31,7 @@ const Content: React.FC = () => {
               width={738}
               height={380}
               alt="service example 1"
+              className="w-full"
             />
           </div>
           <div>
@@ -39,6 +40,7 @@ const Content: React.FC = () => {
               width={738}
               height={380}
               alt="service example 2"
+              className="w-full"
             />
           </div>
         </div>
