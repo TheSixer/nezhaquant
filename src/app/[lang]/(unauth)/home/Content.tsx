@@ -6,7 +6,12 @@ import { useMemo } from 'react'
 
 import Wrapper from '@/components/Layout/Wrapper'
 import { useTranslation } from '@/i18n/client'
-import { getGridVariant, leftElementVariants, rightElementVariants } from '@/utils/motion'
+import {
+  bottomElementVariants,
+  leftElementVariants,
+  rightElementVariants,
+  topElementVariants,
+} from '@/utils/motion'
 
 const Content: React.FC = () => {
   const { t } = useTranslation('home')
@@ -23,36 +28,37 @@ const Content: React.FC = () => {
       <Wrapper dark={false}>
         <div className="text-title mb-8 text-[40px] text-primary">{service.title}</div>
         <div className="mb-16 leading-8 opacity-80">{service.description[0]}</div>
-        <motion.div
-          className="flex flex-col justify-between gap-9 md:flex-row"
-          initial="offscreen"
-          whileInView="onscreen"
-        >
-          {service.items?.map((item, idx) => (
+        <div className="flex flex-col justify-between gap-9 md:flex-row">
+          {service.items?.map((item) => (
             <motion.div
               key={item.title}
               className="mt-3 md:mt-0 md:w-[480px]"
-              variants={getGridVariant(idx)}
+              initial="offscreen"
+              whileInView="onscreen"
             >
-              <Image
-                alt={item.title}
-                src={item.cover!}
-                width={480}
-                height={300}
-                className="w-full"
-              />
-              <div className="my-5 text-sm md:text-lg">{item.title}</div>
-              {item.description.map((str) => (
-                <div
-                  key={str}
-                  className="text-sm leading-8 text-background/60"
-                >
-                  {str}
-                </div>
-              ))}
+              <motion.div variants={topElementVariants}>
+                <Image
+                  alt={item.title}
+                  src={item.cover!}
+                  width={480}
+                  height={300}
+                  className="w-full"
+                />
+              </motion.div>
+              <motion.div variants={bottomElementVariants}>
+                <div className="my-5 text-sm md:text-lg">{item.title}</div>
+                {item.description.map((str) => (
+                  <div
+                    key={str}
+                    className="text-sm leading-8 text-background/60"
+                  >
+                    {str}
+                  </div>
+                ))}
+              </motion.div>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </Wrapper>
 
       <Wrapper>
@@ -79,7 +85,7 @@ const Content: React.FC = () => {
           </motion.div>
           <motion.div
             variants={rightElementVariants}
-            className="mt-2 flex flex-1 flex-col text-lg md:mt-0"
+            className="flex flex-1 flex-col text-lg"
           >
             {superiority.description.map((str) => (
               <div

@@ -7,7 +7,7 @@ const transition = {
 
 export const leftElementVariants: Variants = {
   offscreen: {
-    x: -100,
+    x: -64,
     opacity: 0,
   },
   onscreen: {
@@ -19,7 +19,7 @@ export const leftElementVariants: Variants = {
 
 export const rightElementVariants: Variants = {
   offscreen: {
-    x: 100,
+    x: 64,
     opacity: 0,
   },
   onscreen: {
@@ -28,11 +28,34 @@ export const rightElementVariants: Variants = {
     transition,
   },
 }
+export const topElementVariants: Variants = {
+  offscreen: {
+    y: -64,
+    opacity: 0,
+  },
+  onscreen: {
+    y: 0,
+    opacity: 1,
+    transition,
+  },
+}
 
-export const getGridVariant = (index: number) => {
+export const bottomElementVariants: Variants = {
+  offscreen: {
+    y: 64,
+    opacity: 0,
+  },
+  onscreen: {
+    y: 0,
+    opacity: 1,
+    transition,
+  },
+}
+
+export const getGridVariant = (index: number): Variants => {
   return {
     offscreen: {
-      y: index % 2 === 0 ? -100 : 100,
+      y: index % 2 === 0 ? -64 : 64,
       opacity: 0,
     },
     onscreen: {

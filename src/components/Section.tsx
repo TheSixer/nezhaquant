@@ -33,7 +33,7 @@ const Section: React.FC<{ data: I18nObject; dark?: boolean; titleAlign?: 'left' 
           className={classnames(
             data.cover
               ? 'flex flex-col gap-7 md:flex-row md:gap-[100px]'
-              : 'grid grid-cols-12 gap-12',
+              : 'grid grid-cols-4 gap-12 px-10 md:px-0',
           )}
         >
           {data.cover ? (
@@ -64,7 +64,7 @@ const Section: React.FC<{ data: I18nObject; dark?: boolean; titleAlign?: 'left' 
                     className={classnames('items-center gap-4 border-b-1 py-4', border)}
                   >
                     <div className="mb-4 flex items-center text-lg">
-                      <div className="text-title w-6">{idx + 1}</div>
+                      <div className="text-title">{idx + 1}</div>
                       <div className="md:text-lg">{item.title}</div>
                     </div>
                     {item.description ? (
@@ -79,13 +79,13 @@ const Section: React.FC<{ data: I18nObject; dark?: boolean; titleAlign?: 'left' 
               <motion.div
                 key={item.title}
                 className={classnames(
-                  'col-span-12 mx-10 items-center gap-4 px-12 py-10 md:mx-0 lg:col-span-6 xl:col-span-3',
+                  'col-span-4 px-12 py-10 lg:col-span-2 xl:col-span-1',
                   dark ? 'bg-foreground/10' : 'bg-background/5',
                 )}
                 variants={getGridVariant(idx)}
               >
                 <div className="mb-6 flex h-14 items-center text-lg">
-                  <div className="text-title mr-1 w-6 text-4xl text-primary">{idx + 1}</div>
+                  <div className="text-title mr-1 text-4xl text-primary">{idx + 1}</div>
                   <div className="md:text-lg">{item.title}</div>
                 </div>
                 {item.description ? (
