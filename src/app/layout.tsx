@@ -3,9 +3,9 @@ import 'styles/globals.scss'
 
 import { Geist, Geist_Mono } from 'next/font/google'
 
-import Launch from '@/components/Launch'
-import Footer from '@/components/Layout/Footer'
-import Header from '@/components/Layout/Header'
+import Launch from 'components/Launch'
+import Footer from 'components/Layout/Footer'
+import Header from 'components/Layout/Header'
 import { serverTranslate } from '@/i18n/server'
 
 import { HeroUIProviders } from './HeroUIProvider'
