@@ -31,6 +31,7 @@ const Section: React.FC<{ data: I18nObject; dark?: boolean; titleAlign?: 'left' 
           initial="offscreen"
           whileInView="onscreen"
           className={classnames(
+            'overflow-hidden',
             data.cover
               ? 'flex flex-col gap-7 md:flex-row md:gap-[100px]'
               : 'grid grid-cols-4 gap-12 px-10 md:px-0',
@@ -63,7 +64,7 @@ const Section: React.FC<{ data: I18nObject; dark?: boolean; titleAlign?: 'left' 
                     key={item.title}
                     className={classnames('items-center gap-4 border-b-1 py-4', border)}
                   >
-                    <div className="mb-4 flex items-center text-lg">
+                    <div className="mb-4 flex items-baseline text-lg">
                       <div className="text-title">{idx + 1}</div>
                       <div className="md:text-lg">{item.title}</div>
                     </div>
@@ -84,7 +85,7 @@ const Section: React.FC<{ data: I18nObject; dark?: boolean; titleAlign?: 'left' 
                 )}
                 variants={getGridVariant(idx)}
               >
-                <div className="mb-6 flex h-14 items-center text-lg">
+                <div className="mb-6 flex h-14 items-baseline text-lg">
                   <div className="text-title mr-1 text-4xl text-primary">{idx + 1}</div>
                   <div className="md:text-lg">{item.title}</div>
                 </div>

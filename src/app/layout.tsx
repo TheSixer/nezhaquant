@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import 'styles/globals.scss'
 
 import { Geist, Geist_Mono } from 'next/font/google'
@@ -19,6 +19,13 @@ const geistMono = Geist_Mono({
   variable: '--font-geist-mono',
   subsets: ['latin'],
 })
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+}
 
 export const metadata: Metadata = {
   title: 'Nezha Quant',
@@ -45,7 +52,10 @@ export default async function RootLayout({
   serverTranslate(lang, 'common')
 
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      dir="ltr"
+    >
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Launch lang={lang} />
 

@@ -39,7 +39,7 @@ const Footer = () => {
               <div className="text-sm md:text-xl">{footerI18n[1]}</div>
             </div>
           </div>
-          <div className="mt-12 flex flex-col gap-6 text-2xl md:px-8">
+          <div className="mt-12 flex flex-col gap-6 text-xl md:px-8 md:text-2xl">
             <div className="flex items-center gap-4">
               <div className="h-8 w-8 text-center">
                 <FontAwesomeIcon icon={faEnvelope} />
