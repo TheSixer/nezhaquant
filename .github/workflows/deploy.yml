@@ -81,7 +81,7 @@ jobs:
         echo "File transfer completed."
 
         # 使用 SSH 连接部署
-        ssh -i private_key $SERVER_USER@$SERVER_HOST << 'EOF'
+        ssh -i private_key $SERVER_USER@$SERVER_HOST "export APP_DIR=$APP_DIR; bash -s" << 'EOF'
         # 确保 nvm 安装并加载
         if [ ! -d "$HOME/.nvm" ]; then
             echo "nvm not found, installing..."
