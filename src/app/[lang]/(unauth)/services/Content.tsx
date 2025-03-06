@@ -2,7 +2,7 @@
 
 import { useMemo } from 'react'
 
-import Wrapper from '@/components/Layout/Wrapper'
+import Wrapper from '@/components/layout/Wrapper'
 import Section from '@/components/Section'
 import { useTranslation } from '@/i18n/client'
 import Image from 'next/image'

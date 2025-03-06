@@ -4,7 +4,7 @@ import * as motion from 'framer-motion/client'
 import Image from 'next/image'
 import { useMemo } from 'react'
 
-import Wrapper from '@/components/Layout/Wrapper'
+import Wrapper from '@/components/layout/Wrapper'
 import { classnames } from '@/utils/classnames'
 import { getGridVariant, leftElementVariants, rightElementVariants } from '@/utils/motion'
 

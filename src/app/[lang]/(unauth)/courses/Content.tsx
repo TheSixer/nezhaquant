@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { useMemo } from 'react'
 
 import BorderedButton from '@/components/Button'
-import Wrapper from '@/components/Layout/Wrapper'
+import Wrapper from '@/components/layout/Wrapper'
 import Section from '@/components/Section'
 import { useTranslation } from '@/i18n/client'
 import { bottomElementVariants, getGridVariant, topElementVariants } from '@/utils/motion'
