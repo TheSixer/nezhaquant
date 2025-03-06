@@ -9,24 +9,18 @@
     ],
     "items": [
       {
-        "title": "量化策略产品  Quant Strategy Hub",
-        "cover": "/assets/images/home-service-1.png",
-        "description": ["风火轮100 — “极限杠杆，百倍利润”", "混天绫1% — “稳定复利，每日1%”"]
+        "title": "零基础学量化编程（Python 篇）",
+        "cover": "/assets/images/courses-1.jpg",
+        "link": "https://appuqqcjp5y6259.h5.xiaoeknow.com/p/course/ecourse/course_2ijAy1Bl3NCvpL68PJMtwf4ztPI",
+        "description": ["零基础入门量化编程，从Python基础到量化策略开发", "实战案例讲解，助你快速掌握量化编程技能"]
       },
       {
-        "title": "量化代写服务  Custom Strategy Development",
-        "cover": "/assets/images/home-service-2.png",
+        "title": "零基础学量化编程（C# 篇）",
+        "cover": "/assets/images/courses-2.jpg",
+        "link": "https://appuqqcjp5y6259.h5.xiaoeknow.com/p/course/ecourse/course_2ij38LV3wL5W11JEhaIfij7IS8D",
         "description": [
-          "策略定制、AI模型搭建、回测与实盘接入",
-          "支持多平台：MT4/MT5、cTrader、Python 等"
-        ]
-      },
-      {
-        "title": "量化课程  Quant Academy",
-        "cover": "/assets/images/home-service-3.png",
-        "description": [
-          "从基础到进阶，覆盖量化编程、策略搭建、AI机器学习",
-          "实盘案例、代码解析、直播互动，全方位助力成长"
+          "零基础入门量化编程，从C#基础到量化策略开发",
+          "实战案例讲解，助你快速掌握量化编程技能"
         ]
       }
     ]

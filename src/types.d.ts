@@ -1,6 +1,7 @@
 interface I18nItem {
   cover?: string
   title: string
+  link?: string
   description: string[]
 }
 

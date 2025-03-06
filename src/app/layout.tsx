@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import 'styles/globals.scss'
+import '@/assets/fonts/tmrwdao-icon.css'
 
 import { Geist, Geist_Mono } from 'next/font/google'
 

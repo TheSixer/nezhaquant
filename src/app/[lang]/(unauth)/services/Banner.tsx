@@ -8,7 +8,7 @@ const ServicesBanner: React.FC = () => {
   const { t } = useTranslation('services')
 
   return (
-    <Banner image="/assets/images/services-banner.png">
+    <Banner image="/assets/images/services-banner.webp">
       <div className="absolute bottom-7 left-1/2 w-full -translate-x-1/2 text-center md:bottom-20">
         <div className="text-title mb-2 text-2xl md:mb-14 md:text-7xl">{t('slogan')}</div>
 
