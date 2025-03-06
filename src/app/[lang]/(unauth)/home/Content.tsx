@@ -48,7 +48,7 @@ const Content: React.FC = () => {
                 />
               </motion.div>
               <motion.div variants={bottomElementVariants}>
-                <div className="my-5 text-sm md:text-lg">{item.title}</div>
+                <div className="my-5 text-sm md:text-lg font-bold">{item.title}</div>
                 {item.description.map((str) => (
                   <div
                     key={str}

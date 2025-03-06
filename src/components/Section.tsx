@@ -24,7 +24,7 @@ const Section: React.FC<{ data: I18nObject; dark?: boolean; titleAlign?: 'left' 
             </div>
           </div>
         ) : (
-          <div className="text-title mb-5 text-2xl text-primary md:text-[40px]">{data.title}</div>
+          <div className="text-title mb-10 text-2xl text-primary md:text-[40px]">{data.title}</div>
         )}
 
         <motion.div
@@ -34,13 +34,13 @@ const Section: React.FC<{ data: I18nObject; dark?: boolean; titleAlign?: 'left' 
             'overflow-hidden',
             data.cover
               ? 'flex flex-col gap-7 md:flex-row md:gap-[100px]'
-              : 'grid grid-cols-4 gap-12 px-10 md:px-0',
+              : 'grid grid-cols-4 gap-12 px-5 md:px-0',
           )}
         >
           {data.cover ? (
             <>
               <motion.div
-                className="flex-1"
+                className="flex-1 flex justify-center items-center"
                 variants={leftElementVariants}
               >
                 <Image
@@ -55,7 +55,7 @@ const Section: React.FC<{ data: I18nObject; dark?: boolean; titleAlign?: 'left' 
                 variants={rightElementVariants}
               >
                 {data.description ? (
-                  <div className={classnames('h-16 border-b-1 text-xl', border)}>
+                  <div className={classnames('h-16 border-b-1 text-xl font-bold', border)}>
                     {data.description}
                   </div>
                 ) : null}
