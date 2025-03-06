@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import { useMemo } from 'react'
 
-import Wrapper from '@/components/Layout/Wrapper'
+import Wrapper from '@/components/layout/Wrapper'
 import { useTranslation } from '@/i18n/client'
 
 const Content: React.FC = () => {
