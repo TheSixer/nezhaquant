@@ -4,8 +4,8 @@ import 'styles/globals.scss'
 import { Geist, Geist_Mono } from 'next/font/google'
 
 import Launch from 'components/Launch'
-import Footer from '@/components/Layout/Footer'
-import Header from '@/components/Layout/Header'
+// import Footer from '@/components/Layout/Footer'
+// import Header from '@/components/Layout/Header'
 import { serverTranslate } from '@/i18n/server'
 
 import { HeroUIProviders } from './HeroUIProvider'
@@ -51,9 +51,9 @@ export default async function RootLayout({
 
         <HeroUIProviders>
           <div className="relative flex flex-col">
-            <Header />
+            {/* <Header /> */}
             {children}
-            <Footer />
+            {/* <Footer /> */}
           </div>
         </HeroUIProviders>
       </body>
