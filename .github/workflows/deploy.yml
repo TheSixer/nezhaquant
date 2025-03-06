@@ -78,7 +78,8 @@ jobs:
 
         # 传输文件
         scp -i private_key nezha-quant.tar.gz $SERVER_USER@$SERVER_HOST:$APP_DIR
-        
+        echo "File transfer completed."
+
         # 使用 SSH 连接部署
         ssh -i private_key $SERVER_USER@$SERVER_HOST << 'EOF'
         # 确保 nvm 安装并加载
@@ -109,8 +110,14 @@ jobs:
         mkdir -p $APP_DIR  # 创建目标目录
         cd $APP_DIR
 
-        # 解压文件
-        tar --overwrite -xzf nezha-quant.tar.gz
+        # 检查文件是否存在
+        if [ -f "nezha-quant.tar.gz" ]; then
+          echo "File exists, proceeding with extraction."
+          tar --overwrite -xzf nezha-quant.tar.gz -C "$APP_DIR"
+        else
+          echo "Error: File nezha-quant.tar.gz not found."
+          exit 1
+        fi
 
         # 确保安装 pm2 和 pnpm
         if ! command -v pm2 &> /dev/null; then
