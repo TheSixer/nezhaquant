@@ -67,9 +67,9 @@ const Header = () => {
 
   return (
     <Navbar
-      // classNames={{
-      //   wrapper: 'max-w-[1520px] h-[100px] md:px-12',
-      // }}
+      classNames={{
+        wrapper: 'max-w-[1520px] md:px-12',
+      }}
       isMenuOpen={isOpen}
       height="100px"
     >
