@@ -7,6 +7,7 @@ import { useTranslation } from '@/i18n/client'
 import {
   faTiktok,
   faWhatsapp,
+  faQq,
 } from '@fortawesome/free-brands-svg-icons'
 import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -34,7 +35,7 @@ const Footer = () => {
               <div className="text-sm md:text-xl">{footerI18n[1]}</div>
             </div>
           </div>
-          <div className="mt-12 flex flex-col gap-6 text-xl md:px-8 md:text-2xl">
+          <div className="mt-12 flex flex-col gap-4 text-lg md:px-8 md:text-xl">
             <div className="flex items-center gap-4">
               <FontAwesomeIcon icon={faEnvelope} size="sm" />
                 <a href="mailto:NeZhaQuant.services@gmail.com" className="text-md" target="_blank">
@@ -44,6 +45,10 @@ const Footer = () => {
             <div className="flex items-center gap-4">
               <FontAwesomeIcon icon={faPhone} size="sm" />
               <a href="tel:+61490470976" className="text-md" target="_blank">+61 490470976</a>
+            </div>
+            <div className="flex items-center gap-4">
+                <FontAwesomeIcon icon={faQq} size="sm" />
+              <a href="http://wpa.qq.com/msgrd?v=3&uin=3770559984&site=qq&menu=yes" className="text-md" target="_blank">QQ: 3770559984</a>
             </div>
             <div className="mt-4 flex items-center gap-8 text-2xl">
               {/* <a href="https://www.instagram.com/nezhaquant/" target="_blank">
