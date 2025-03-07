@@ -14,11 +14,13 @@ import { HeroUIProviders } from './HeroUIProvider'
 const geistSans = Geist({
   variable: '--font-geist-sans',
   subsets: ['latin'],
+  display: 'swap',
 })
 
 const geistMono = Geist_Mono({
   variable: '--font-geist-mono',
   subsets: ['latin'],
+  display: 'swap',
 })
 
 export const viewport: Viewport = {
@@ -29,9 +31,54 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  title: 'Nezha Quant',
-  description: 'Quantitative Trading Platform',
+  title: {
+    default: 'Nezha Quant - 量化交易平台',
+    template: '%s | Nezha Quant'
+  },
+  description: '哪吒量化平台提供专业的量化交易策略、算法与培训服务，帮助投资者实现自动化交易',
   manifest: '/site.webmanifest',
+  metadataBase: new URL('https://nezhaquant.com'),
+  alternates: {
+    canonical: '/',
+    languages: {
+      'en': '/en',
+      'zh-CN': '/',
+    },
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'zh_CN',
+    url: 'https://nezhaquant.com/',
+    title: 'Nezha Quant - 量化交易平台',
+    description: '哪吒量化平台提供专业的量化交易策略、算法与培训服务，帮助投资者实现自动化交易',
+    siteName: 'Nezha Quant',
+    images: [
+      {
+        url: '/assets/images/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Nezha Quant Logo',
+      }
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Nezha Quant - 量化交易平台',
+    description: '哪吒量化平台提供专业的量化交易策略、算法与培训服务',
+    images: ['/assets/images/twitter-image.jpg'],
+    creator: '@NeZhaQuant',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-video-preview': -1,
+      'max-snippet': -1,
+    },
+  },
   icons: {
     icon: [
       { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
@@ -54,9 +101,14 @@ export default async function RootLayout({
 
   return (
     <html
-      lang="en"
+      lang={lang}
       dir="ltr"
     >
+      <head>
+        <link rel="preload" href="/assets/fonts/YouSheBiaoTiHei.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
+        <link rel="preload" href="/assets/images/logo.svg" as="image" />
+        <link rel="manifest" href="/site.webmanifest" />
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Launch lang={lang} />
 
