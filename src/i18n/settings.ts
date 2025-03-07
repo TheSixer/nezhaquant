@@ -15,6 +15,6 @@ export function getOptions(lng = fallbackLng, ns: string | string[] = defaultNS)
 }
 
 export const languagesLabel = [
-  { lang: 'zh-CN', label: 'CN' },
-  { lang: 'en', label: 'EN' },
+  { lang: 'zh-CN', label: 'CN', prefix: '' },
+  { lang: 'en', label: 'EN', prefix: 'en' },
 ]

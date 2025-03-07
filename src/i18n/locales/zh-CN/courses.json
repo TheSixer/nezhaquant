@@ -10,13 +10,13 @@
     "items": [
       {
         "title": "零基础学量化编程（Python 篇）",
-        "cover": "/assets/images/courses-1.jpg",
+        "cover": "/assets/images/courses-1.webp",
         "link": "https://appuqqcjp5y6259.h5.xiaoeknow.com/p/course/ecourse/course_2ijAy1Bl3NCvpL68PJMtwf4ztPI",
         "description": ["零基础入门量化编程，从Python基础到量化策略开发", "实战案例讲解，助你快速掌握量化编程技能"]
       },
       {
         "title": "零基础学量化编程（C# 篇）",
-        "cover": "/assets/images/courses-2.jpg",
+        "cover": "/assets/images/courses-2.webp",
         "link": "https://appuqqcjp5y6259.h5.xiaoeknow.com/p/course/ecourse/course_2ij38LV3wL5W11JEhaIfij7IS8D",
         "description": [
           "零基础入门量化编程，从C#基础到量化策略开发",

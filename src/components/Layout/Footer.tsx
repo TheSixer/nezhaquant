@@ -78,10 +78,13 @@ const Footer = () => {
             {t('contactUs')}
           </BorderedButton>
 
-          <div className="mt-12 flex justify-center items-center gap-6">
-            <a href="dingtalk://dingtalkclient/action/sendmsg?dingtalk_id=nezhalianghua" target="_blank">
-              <Image src="/assets/images/logo.svg" alt="钉钉" width={200} height={200} />
-            </a>
+          <div className="mt-12 flex justify-center items-center flex-col md:flex-row gap-6">
+            <div className="flex flex-col items-center gap-2">
+              <Image src="/assets/images/dingding.jpg" alt="钉钉" width={124} height={124} />
+              <div className="text-sm">
+                钉钉
+              </div>
+            </div>
           </div>
         </div>
       </div>
